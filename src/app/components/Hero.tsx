@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import Container from './ui/Container';
 import Button from './ui/Button';
 import { ChevronDownIcon } from './ui/Icons';
-import { heroContent } from '../data/content';
 
 export default function Hero() {
    return (
@@ -32,7 +31,7 @@ export default function Hero() {
                   initial={{ y: 50, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.3 }}
-                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif !font-black mb-6 sm:mb-8 leading-tight"
+                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-medium mb-6 sm:mb-8 leading-tight"
                >
                   Precision Born of the Sea.
                </motion.h1>

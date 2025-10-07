@@ -1,87 +1,107 @@
+"use client";
+
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 import Container from './ui/Container';
-import Button from './ui/Button';
-import { CheckIcon } from './ui/Icons';
-import { aboutContent } from '../data/content';
 
 export default function AboutSection() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-24 bg-[#F4F8FC]">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Content */}
-          <div className="order-2 lg:order-1">
-            <h2 className="text-body-semibold-l mb-6 text-body">
-              {aboutContent.title}
-              <span className="block text-primary mt-2">{aboutContent.subtitle}</span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left: Content */}
+          <motion.div
+            initial={{ y: 24, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="order-2 lg:order-1"
+          >
+            <h2 className="font-serif italic text-3xl sm:text-4xl md:text-[42px] text-[#0B1D2C] mb-6 leading-tight xl:whitespace-nowrap">
+              Beyond boats, it&apos;s a lifestyle.
             </h2>
-            
-            <p className="text-body-regular-md text-gray-600 mb-6">
-              {aboutContent.description}
+            <p className="text-base sm:text-lg text-gray-700 mb-3 max-w-2xl">
+              Nordkapp blends power, safety, and Scandinavian elegance.
+            </p>
+            <p className="text-base sm:text-lg text-gray-700 mb-10 max-w-2xl">
+              Every voyage becomes an experience where precision engineering meets the freedom of open waters.
             </p>
 
-            <p className="text-body-regular text-gray-600 mb-8">
-              Our team of marine experts carefully selects each vessel in our collection, 
-              ensuring you receive only the highest quality boats, yachts, and marine equipment. 
-              From luxury yachts to fishing boats, we have something for every water lover.
-            </p>
+            {/* Badge */}
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-[#0B1D2C] text-white flex items-center justify-center text-sm font-semibold shadow-md">
+                1966
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-gray-900">Trusted in Nordic waters since 1966</div>
+                <div className="text-sm text-gray-600">Over 50 years of maritime excellence</div>
+              </div>
+            </div>
+          </motion.div>
 
-            {/* Features */}
-            <div className="space-y-6 mb-10">
-              {aboutContent.features.map((feature, index) => (
-                <div key={index} className="flex items-start">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                    <CheckIcon size={20} className="text-primary" />
+          {/* Right: Images collage */}
+          <div className="order-1 lg:order-2">
+            <div className="flex gap-[10px] h-[320px] sm:h-[400px] md:h-[480px]">
+              {/* Left column - two stacked images */}
+              <div className="flex flex-col gap-[10px] flex-[1.5]">
+                {/* Top-left */}
+                <motion.div
+                  initial={{ y: 16, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="flex-1"
+                >
+                  <div className="relative h-full rounded-xl overflow-hidden shadow-md">
+                    <Image
+                      src="/images/imageWithFallback(2).png"
+                      alt="Sailing crew"
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 1024px) 260px, (min-width: 640px) 50vw, 100vw"
+                      priority
+                    />
                   </div>
-                  <div>
-                    <h3 className="text-h5 font-semibold text-body mb-2">
-                      {feature.title}
-                    </h3>
-                    <p className="text-body-regular text-gray-600">
-                      {feature.description}
-                    </p>
+                </motion.div>
+
+                {/* Bottom-left */}
+                <motion.div
+                  initial={{ y: 16, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="flex-1"
+                >
+                  <div className="relative h-full rounded-xl overflow-hidden shadow-md">
+                    <Image
+                      src="/images/imageWithFallback(3).png"
+                      alt="Harbor yachts"
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 1024px) 260px, (min-width: 640px) 50vw, 100vw"
+                    />
                   </div>
-                </div>
-              ))}
-            </div>
+                </motion.div>
+              </div>
 
-            <Button 
-              href={aboutContent.button.href}
-              className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
-            >
-              {aboutContent.button.text}
-            </Button>
-          </div>
-
-          {/* Image */}
-          <div className="relative order-1 lg:order-2">
-            <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-                <div className="text-white text-8xl">🏖️</div>
-              </div>
-              <div className="absolute inset-0 bg-black/20"></div>
-            </div>
-            
-            {/* Floating Stats */}
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-6">
-              <div className="text-center">
-                <div className="text-price-sm font-bold text-primary mb-1">
-                  {aboutContent.stats[0].value}
+              {/* Right column - tall image */}
+              <motion.div
+                initial={{ x: 16, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.25 }}
+                className="flex-[1.5]"
+              >
+                <div className="relative h-[180px] top-17 md:top-28 md:h-[280px]  rounded-xl overflow-hidden shadow-md">
+                  <Image
+                    src="/images/imageWithFallback(1).png"
+                    alt="Sunset at sea"
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw"
+                  />
                 </div>
-                <div className="text-body-xs text-gray-600">
-                  {aboutContent.stats[0].label}
-                </div>
-              </div>
-            </div>
-            
-            <div className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-xl p-6">
-              <div className="text-center">
-                <div className="text-price-sm font-bold text-primary mb-1">
-                  {aboutContent.stats[1].value}
-                </div>
-                <div className="text-body-xs text-gray-600">
-                  {aboutContent.stats[1].label}
-                </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>

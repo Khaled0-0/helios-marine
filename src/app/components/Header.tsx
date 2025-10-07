@@ -62,7 +62,7 @@ export default function Header() {
                      <div className="shine-overlay pointer-events-none rounded-lg" aria-hidden="true" />
                   </div>
                   <div className="flex flex-col -space-y-0.7">
-                     <h1 className="text-white text-lg font-serif !not-italic font-semibold leading-tight">Helios Marine</h1>
+                     <h1 className="text-white text-lg font-serif font-semibold leading-tight !not-italic">Helios Marine</h1>
                      <p className="text-white/70 text-xs flex items-center gap-2">
                         Authorized Nordkapp Dealer
                         <Image src="/images/Icon (1).svg" alt="decorative waves" width={12} height={12} />
