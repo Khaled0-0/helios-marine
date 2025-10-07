@@ -54,7 +54,7 @@ export default function AboutSection() {
                 >
                   <div className="relative h-full rounded-xl overflow-hidden shadow-md">
                     <Image
-                      src="/images/imageWithFallback(2).png"
+                      src="/images/ImageWithFallback(2).png"
                       alt="Sailing crew"
                       fill
                       className="object-cover"
@@ -74,7 +74,7 @@ export default function AboutSection() {
                 >
                   <div className="relative h-full rounded-xl overflow-hidden shadow-md">
                     <Image
-                      src="/images/imageWithFallback(3).png"
+                      src="/images/ImageWithFallback(3).png"
                       alt="Harbor yachts"
                       fill
                       className="object-cover"
@@ -94,7 +94,7 @@ export default function AboutSection() {
               >
                 <div className="relative h-[180px] top-17 md:top-28 md:h-[280px]  rounded-xl overflow-hidden shadow-md">
                   <Image
-                    src="/images/imageWithFallback(1).png"
+                    src="/images/ImageWithFallback(1).png"
                     alt="Sunset at sea"
                     fill
                     className="object-cover"
