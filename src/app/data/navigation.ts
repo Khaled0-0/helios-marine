@@ -4,7 +4,7 @@ export const navigationItems: NavigationItem[] = [
   { name: 'Home', href: '/' },
   { name: 'Boats', href: '/boats' },
   { name: 'About', href: '/about' },
-  { name: 'Shop', href: '/shop' },
+  // { name: 'Shop', href: '/shop' },
   { name: 'Contact', href: '/contact' },
 ];
 

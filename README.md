@@ -1,205 +1,71 @@
-# Helios - Premium Boat Marketplace
+# Helios Marine - Luxury Yacht Website
 
-A modern, responsive website for a premium boat marketplace built with Next.js 15, TypeScript, and Tailwind CSS v4.
+A modern, responsive website for Helios Marine, featuring premium yacht services and marine equipment. Built with Next.js 15, TypeScript, and Tailwind CSS.
 
 ## 🚀 Features
 
-- **Fully Responsive Design** - Optimized for mobile, tablet, and desktop
-- **Modern Tech Stack** - Next.js 15, TypeScript, Tailwind CSS v4
-- **Component-Based Architecture** - Reusable UI components
-- **Type Safety** - Full TypeScript support with custom types
-- **Clean Code Structure** - Organized data files and utilities
-- **Accessibility** - ARIA labels and keyboard navigation
-- **Performance Optimized** - Fast loading and smooth animations
+- **Modern Design**: Clean, luxury-focused UI matching Figma specifications
+- **Responsive**: Mobile-first design that works on all devices
+- **Animations**: Smooth Framer Motion animations throughout
+- **Typography**: Elegant Cormorant Garamond for headings, Inter for body text
+- **Interactive Elements**: Animated mobile menu with click-outside-to-close
+- **Performance**: Optimized with Next.js 15 and Turbopack
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 15 with App Router
+- **Framework**: Next.js 15.5.4 with Turbopack
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS v4
-- **Icons**: Custom SVG icons
-- **Font**: Inter (system font stack)
-
-## 📁 Project Structure
-
-```
-src/
-├── app/
-│   ├── components/
-│   │   ├── ui/                 # Reusable UI components
-│   │   │   ├── Button.tsx
-│   │   │   ├── Container.tsx
-│   │   │   └── Icons.tsx
-│   │   ├── Header.tsx
-│   │   ├── Hero.tsx
-│   │   ├── BoatsSection.tsx
-│   │   ├── AboutSection.tsx
-│   │   └── Footer.tsx
-│   ├── data/                   # Data files
-│   │   ├── navigation.ts
-│   │   ├── boats.ts
-│   │   └── content.ts
-│   ├── types/                  # TypeScript types
-│   │   └── index.ts
-│   ├── lib/                    # Utilities
-│   │   └── utils.ts
-│   ├── globals.css
-│   ├── layout.tsx
-│   └── page.tsx
-```
+- **Animations**: Framer Motion
+- **Fonts**: Google Fonts (Cormorant Garamond, Inter)
+- **Deployment**: Vercel
 
 ## 🎨 Design System
 
-### Colors
-- **Primary**: Blue (#2563eb)
-- **Secondary**: Slate (#64748b)
-- **Accent**: Sky Blue (#0ea5e9)
-- **Success**: Green (#10b981)
-- **Error**: Red (#ef4444)
-- **Warning**: Amber (#f59e0b)
+- **Colors**: Custom color palette matching Figma design
+- **Typography**: Hierarchical font system with proper spacing
+- **Components**: Reusable UI components with consistent styling
+- **Animations**: Smooth transitions and micro-interactions
 
-### Typography
-- **Display**: 3rem, bold, -0.02em letter-spacing
-- **H1**: 2.5rem, bold, -0.02em letter-spacing
-- **H2**: 2rem, semibold, -0.01em letter-spacing
-- **Body**: 1rem, regular, 1.6 line-height
-- **Body Large**: 1.25rem, regular, 1.5 line-height
+## 📱 Sections
 
-### Spacing
-- **Container**: Max-width 1200px with responsive padding
-- **Sections**: 16-24 vertical padding (responsive)
-- **Components**: 4-8px internal spacing
-
-## 📱 Responsive Breakpoints
-
-- **Mobile**: < 640px
-- **Tablet**: 640px - 1024px
-- **Desktop**: 1024px - 1280px
-- **Large Desktop**: > 1280px
+- **Header**: Animated navigation with mobile menu
+- **Hero**: Full-screen yacht background with call-to-action
+- **Boats**: Premium boat collection showcase
+- **About**: Company information and features
+- **Footer**: Links and social media
 
 ## 🚀 Getting Started
 
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/helios-marine.git
+   cd helios-marine
+   ```
 
-### Installation
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-1. Clone the repository:
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📦 Build for Production
+
 ```bash
-git clone <repository-url>
-cd helios
+npm run build
+npm start
 ```
 
-2. Install dependencies:
-```bash
-npm install
-```
+## 🌐 Live Demo
 
-3. Start the development server:
-```bash
-npm run dev
-```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Available Scripts
-
-- `npm run dev` - Start development server with Turbopack
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-
-## 🎯 Key Components
-
-### Header
-- Responsive navigation with mobile menu
-- Logo with hover effects
-- CTA button
-- Smooth animations
-
-### Hero Section
-- Full-screen hero with background
-- Responsive typography
-- Call-to-action buttons
-- Statistics display
-- Scroll indicator
-
-### Boats Section
-- Grid layout (1-4 columns based on screen size)
-- Boat cards with hover effects
-- Feature lists with icons
-- Condition badges
-- Responsive images
-
-### About Section
-- Two-column layout (mobile: stacked)
-- Feature highlights with icons
-- Floating statistics
-- Responsive images
-
-### Footer
-- Multi-column layout
-- Social media links
-- Organized link groups
-- Responsive design
-
-## 🔧 Customization
-
-### Adding New Boats
-Edit `src/app/data/boats.ts` to add new boat entries:
-
-```typescript
-{
-  id: 7,
-  name: 'New Boat Model',
-  type: 'Yacht',
-  price: '$500,000',
-  length: '50 ft',
-  capacity: '12 guests',
-  image: '/path/to/image.jpg',
-  features: ['Feature 1', 'Feature 2'],
-  description: 'Boat description',
-  year: 2024,
-  condition: 'new',
-}
-```
-
-### Updating Content
-Edit the respective files in `src/app/data/`:
-- `navigation.ts` - Navigation items and footer links
-- `content.ts` - Hero and about section content
-- `boats.ts` - Boat listings
-
-### Styling
-- Global styles: `src/app/globals.css`
-- Component styles: Use Tailwind classes
-- Design system: CSS custom properties in `:root`
-
-## 📱 Mobile Optimization
-
-- Touch-friendly buttons (44px minimum)
-- Readable typography (16px minimum)
-- Optimized images and icons
-- Smooth scrolling and animations
-- Accessible navigation
-
-## ♿ Accessibility Features
-
-- Semantic HTML structure
-- ARIA labels and roles
-- Keyboard navigation support
-- Focus indicators
-- Screen reader friendly
-- High contrast ratios
-
-## 🚀 Performance
-
-- Optimized images and icons
-- Minimal JavaScript bundle
-- CSS optimization with Tailwind
-- Fast loading with Next.js 15
-- Turbopack for faster development
+[View Live Site on Vercel](https://helios-marine.vercel.app)
 
 ## 📄 License
 
@@ -208,15 +74,11 @@ This project is licensed under the MIT License.
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## 📞 Support
-
-For support or questions, please contact the development team.
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ---
 
-Built with ❤️ for boat lovers
+Built with ❤️ for Helios Marine
