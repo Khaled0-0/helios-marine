@@ -99,7 +99,7 @@ const ExperienceCard = ({ experience, index }: { experience: typeof experiences[
                {experience.title}
             </motion.h3>
             <motion.p
-               className="text-sm sm:text-base text-gray-200 font-medium"
+               className="text-sm sm:text-base text-gray-300 font-medium"
                initial={{ opacity: 0.8 }}
                whileHover={{ opacity: 1 }}
                transition={{ duration: 0.2 }}
@@ -156,10 +156,10 @@ export default function ExperienceSection() {
                transition={{ duration: 0.6, ease: "easeOut" }}
                className="text-center mb-16"
             >
-               <h2 className="font-serif italic text-4xl sm:text-5xl md:text-6xl text-blue-200 mb-6">
+               <h2 className="font-serif italic text-4xl sm:text-5xl md:text-6xl text-white mb-6">
                   Experience the Sea
                </h2>
-               <p className="text-lg sm:text-xl text-blue-300 max-w-4xl mx-auto leading-relaxed lg:whitespace-nowrap">
+               <p className="text-lg sm:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed lg:whitespace-nowrap">
                   Every moment aboard a Nordkapp is crafted for perfection. Discover the possibilities.
                </p>
             </motion.div>
