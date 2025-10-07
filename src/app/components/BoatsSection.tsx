@@ -131,7 +131,7 @@ export default function BoatsSection() {
                     </div>
 
                     {/* Length */}
-                    <div className="flex items-center space-x-3">
+                    <div className="flex items-center space-x-3 ml-7">
                       <SpecIcon icon="/images/anchor-i.svg" alt="Length" />
                       <div>
                         <div className="text-sm font-semibold text-[#0B1D2C]">
@@ -142,7 +142,7 @@ export default function BoatsSection() {
                     </div>
 
                     {/* Capacity */}
-                    <div className="flex items-center space-x-3">
+                    <div className="flex items-center space-x-3 ">
                       <SpecIcon icon="/images/persons-i.svg" alt="Capacity" />
                       <div>
                         <div className="text-sm font-semibold text-[#0B1D2C]">
@@ -153,7 +153,7 @@ export default function BoatsSection() {
                     </div>
 
                     {/* Engine Power */}
-                    <div className="flex items-center space-x-3">
+                    <div className="flex items-center space-x-3 ml-7">
                       <SpecIcon icon="/images/lightning-i.svg" alt="Engine Power" />
                       <div>
                         <div className="text-sm font-semibold text-[#0B1D2C]">
