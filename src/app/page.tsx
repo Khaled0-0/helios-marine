@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import AboutSection from './components/AboutSection';
 import BoatsSection from './components/BoatsSection';
 import FeaturesSection from './components/FeaturesSection';
+import HeritageSection from './components/HeritageSection';
 
 export default function Home() {
   return (
@@ -21,6 +22,9 @@ export default function Home() {
 
         {/* Section 5: Features - Services and benefits */}
         <FeaturesSection />
+
+        {/* Section 6: Heritage - Nordic heritage meets UAE waters */}
+        <HeritageSection />
       </main>
     </div>
   );
