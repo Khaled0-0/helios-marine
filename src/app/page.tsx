@@ -7,6 +7,7 @@ import HeritageSection from './components/HeritageSection';
 import ExperienceSection from './components/ExperienceSection';
 import TestimonialsSection from './components/TestimonialsSection';
 import ContactSection from './components/ContactSection';
+import FAQSection from './components/FAQSection';
 
 export default function Home() {
   return (
@@ -37,6 +38,9 @@ export default function Home() {
 
         {/* Section 9: Contact - Your journey begins on the water */}
         <ContactSection />
+
+        {/* Section 10: FAQ - Frequently Asked Questions */}
+        <FAQSection />
       </main>
     </div>
   );
