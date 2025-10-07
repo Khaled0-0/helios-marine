@@ -1,36 +1,222 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Helios - Premium Boat Marketplace
 
-## Getting Started
+A modern, responsive website for a premium boat marketplace built with Next.js 15, TypeScript, and Tailwind CSS v4.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Fully Responsive Design** - Optimized for mobile, tablet, and desktop
+- **Modern Tech Stack** - Next.js 15, TypeScript, Tailwind CSS v4
+- **Component-Based Architecture** - Reusable UI components
+- **Type Safety** - Full TypeScript support with custom types
+- **Clean Code Structure** - Organized data files and utilities
+- **Accessibility** - ARIA labels and keyboard navigation
+- **Performance Optimized** - Fast loading and smooth animations
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **Icons**: Custom SVG icons
+- **Font**: Inter (system font stack)
+
+## 📁 Project Structure
+
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── ui/                 # Reusable UI components
+│   │   │   ├── Button.tsx
+│   │   │   ├── Container.tsx
+│   │   │   └── Icons.tsx
+│   │   ├── Header.tsx
+│   │   ├── Hero.tsx
+│   │   ├── BoatsSection.tsx
+│   │   ├── AboutSection.tsx
+│   │   └── Footer.tsx
+│   ├── data/                   # Data files
+│   │   ├── navigation.ts
+│   │   ├── boats.ts
+│   │   └── content.ts
+│   ├── types/                  # TypeScript types
+│   │   └── index.ts
+│   ├── lib/                    # Utilities
+│   │   └── utils.ts
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Design System
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Colors
+- **Primary**: Blue (#2563eb)
+- **Secondary**: Slate (#64748b)
+- **Accent**: Sky Blue (#0ea5e9)
+- **Success**: Green (#10b981)
+- **Error**: Red (#ef4444)
+- **Warning**: Amber (#f59e0b)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Typography
+- **Display**: 3rem, bold, -0.02em letter-spacing
+- **H1**: 2.5rem, bold, -0.02em letter-spacing
+- **H2**: 2rem, semibold, -0.01em letter-spacing
+- **Body**: 1rem, regular, 1.6 line-height
+- **Body Large**: 1.25rem, regular, 1.5 line-height
 
-## Learn More
+### Spacing
+- **Container**: Max-width 1200px with responsive padding
+- **Sections**: 16-24 vertical padding (responsive)
+- **Components**: 4-8px internal spacing
 
-To learn more about Next.js, take a look at the following resources:
+## 📱 Responsive Breakpoints
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Mobile**: < 640px
+- **Tablet**: 640px - 1024px
+- **Desktop**: 1024px - 1280px
+- **Large Desktop**: > 1280px
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Getting Started
 
-## Deploy on Vercel
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Installation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd helios
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Available Scripts
+
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+## 🎯 Key Components
+
+### Header
+- Responsive navigation with mobile menu
+- Logo with hover effects
+- CTA button
+- Smooth animations
+
+### Hero Section
+- Full-screen hero with background
+- Responsive typography
+- Call-to-action buttons
+- Statistics display
+- Scroll indicator
+
+### Boats Section
+- Grid layout (1-4 columns based on screen size)
+- Boat cards with hover effects
+- Feature lists with icons
+- Condition badges
+- Responsive images
+
+### About Section
+- Two-column layout (mobile: stacked)
+- Feature highlights with icons
+- Floating statistics
+- Responsive images
+
+### Footer
+- Multi-column layout
+- Social media links
+- Organized link groups
+- Responsive design
+
+## 🔧 Customization
+
+### Adding New Boats
+Edit `src/app/data/boats.ts` to add new boat entries:
+
+```typescript
+{
+  id: 7,
+  name: 'New Boat Model',
+  type: 'Yacht',
+  price: '$500,000',
+  length: '50 ft',
+  capacity: '12 guests',
+  image: '/path/to/image.jpg',
+  features: ['Feature 1', 'Feature 2'],
+  description: 'Boat description',
+  year: 2024,
+  condition: 'new',
+}
+```
+
+### Updating Content
+Edit the respective files in `src/app/data/`:
+- `navigation.ts` - Navigation items and footer links
+- `content.ts` - Hero and about section content
+- `boats.ts` - Boat listings
+
+### Styling
+- Global styles: `src/app/globals.css`
+- Component styles: Use Tailwind classes
+- Design system: CSS custom properties in `:root`
+
+## 📱 Mobile Optimization
+
+- Touch-friendly buttons (44px minimum)
+- Readable typography (16px minimum)
+- Optimized images and icons
+- Smooth scrolling and animations
+- Accessible navigation
+
+## ♿ Accessibility Features
+
+- Semantic HTML structure
+- ARIA labels and roles
+- Keyboard navigation support
+- Focus indicators
+- Screen reader friendly
+- High contrast ratios
+
+## 🚀 Performance
+
+- Optimized images and icons
+- Minimal JavaScript bundle
+- CSS optimization with Tailwind
+- Fast loading with Next.js 15
+- Turbopack for faster development
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📞 Support
+
+For support or questions, please contact the development team.
+
+---
+
+Built with ❤️ for boat lovers

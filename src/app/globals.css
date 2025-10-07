@@ -1,26 +1,345 @@
 @import "tailwindcss";
 
 :root {
+  /* Base colors from Figma design system */
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Figma Design System Colors */
+  --body: #171717;
+  --gray-pure: #DDDDDD;
+  --base-white: #ffffff;
+
+  /* Primary colors */
+  --primary: #0B1D2C;
+  --primary-dark: #0A1A28;
+  --secondary: #64748b;
+
+  /* Status colors */
+  --success: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+
+  /* Neutral colors */
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
+
+  /* Typography - Inter for body text, Cormorant Garamond for headings */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-gray-50: var(--gray-50);
+  --color-gray-100: var(--gray-100);
+  --color-gray-200: var(--gray-200);
+  --color-gray-300: var(--gray-300);
+  --color-gray-400: var(--gray-400);
+  --color-gray-500: var(--gray-500);
+  --color-gray-600: var(--gray-600);
+  --color-gray-700: var(--gray-700);
+  --color-gray-800: var(--gray-800);
+  --color-gray-900: var(--gray-900);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-warning: var(--warning);
+  --font-sans: var(--font-primary);
+  --font-serif: var(--font-heading);
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f172a;
+    --foreground: #f8fafc;
   }
+}
+
+/* Logo shine animation */
+@keyframes shine-sweep {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.35;
+  }
+
+  50% {
+    opacity: 0.25;
+  }
+
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+.shine-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.shine-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 60%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.45) 50%, rgba(255, 255, 255, 0) 100%);
+  filter: blur(2px);
+  transform: skewX(-20deg);
+  animation: shine-sweep 2.2s ease-in-out infinite;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography hierarchy */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+p,
+span,
+div,
+a,
+button,
+input,
+textarea,
+label,
+small,
+strong,
+em,
+b,
+i,
+u,
+s,
+del,
+ins,
+mark,
+code,
+pre,
+kbd,
+samp,
+var,
+cite,
+dfn,
+abbr,
+acronym,
+address,
+blockquote,
+q,
+sub,
+sup,
+tt,
+big,
+small {
+  font-family: var(--font-primary);
+}
+
+/* Typography styles matching Figma design system exactly */
+.text-body-semibold-sm {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  font-family: var(--font-primary);
+}
+
+.text-body-regular {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  font-family: var(--font-primary);
+}
+
+.text-body-semibold-medium {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  font-family: var(--font-primary);
+}
+
+.text-body-regular-md {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 400;
+  font-family: var(--font-primary);
+}
+
+.text-body-semibold-l {
+  font-size: 30px;
+  line-height: 38px;
+  font-weight: 600;
+  font-family: var(--font-primary);
+}
+
+.text-body-header {
+  font-size: 32px;
+  line-height: 120px;
+  font-weight: 400;
+  font-family: var(--font-primary);
+}
+
+.text-h5 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
+  font-family: var(--font-primary);
+}
+
+.text-body-md-small {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  font-family: var(--font-primary);
+}
+
+.text-nav-selected {
+  font-size: 24px;
+  line-height: 150px;
+  font-weight: 400;
+  font-family: var(--font-primary);
+}
+
+.text-body-small-md {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  font-family: var(--font-primary);
+}
+
+.text-body-xs {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  font-family: var(--font-primary);
+}
+
+.text-body-small-bold {
+  font-size: 14px;
+  line-height: 160px;
+  font-weight: 700;
+  font-family: var(--font-primary);
+}
+
+.text-price-sm {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
+  font-family: var(--font-primary);
+}
+
+.text-price-large {
+  font-size: 32px;
+  line-height: 36px;
+  font-weight: 400;
+  font-family: var(--font-primary);
+}
+
+/* Utility classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 3rem;
+  }
+}
+
+/* Responsive utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+.focus-visible:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-500);
 }
