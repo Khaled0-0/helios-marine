@@ -4,6 +4,7 @@ import AboutSection from './components/AboutSection';
 import BoatsSection from './components/BoatsSection';
 import FeaturesSection from './components/FeaturesSection';
 import HeritageSection from './components/HeritageSection';
+import ExperienceSection from './components/ExperienceSection';
 
 export default function Home() {
   return (
@@ -25,6 +26,9 @@ export default function Home() {
 
         {/* Section 6: Heritage - Nordic heritage meets UAE waters */}
         <HeritageSection />
+
+        {/* Section 7: Experience - Experience the sea with three experience cards */}
+        <ExperienceSection />
       </main>
     </div>
   );
