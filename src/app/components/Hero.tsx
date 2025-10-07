@@ -31,7 +31,7 @@ export default function Hero() {
                   initial={{ y: 50, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.3 }}
-                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-medium mb-6 sm:mb-8 leading-tight"
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-medium mb-4 sm:mb-6 md:mb-8 leading-tight px-2 sm:px-0"
                >
                   Precision Born of the Sea.
                </motion.h1>
@@ -41,7 +41,7 @@ export default function Hero() {
                   initial={{ y: 30, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
-                  className="text-lg sm:text-xl lg:text-2xl mb-8 sm:mb-12 max-w-4xl mx-auto text-gray-200 font-light"
+                  className="text-sm sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 md:mb-12 max-w-4xl mx-auto text-gray-200 font-light px-4 sm:px-2 md:px-0 leading-relaxed"
                >
                   Authorized dealer in UAE — Helios Marine brings Scandinavian Engineering to Gulf waters.
                </motion.p>
@@ -51,7 +51,7 @@ export default function Hero() {
                   initial={{ y: 30, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.7 }}
-                  className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-16 sm:mb-20"
+                  className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center mb-12 sm:mb-16 md:mb-20 px-4 sm:px-2 md:px-0"
                >
                   <motion.div
                      whileHover={{ scale: 1.05 }}
@@ -60,7 +60,7 @@ export default function Hero() {
                   >
                      <Button
                         href="/boats"
-                        className="w-full sm:w-auto bg-[#0B1D2C] hover:bg-[#0A1A28] text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center"
+                        className="w-full sm:w-auto bg-[#0B1D2C] hover:bg-[#0A1A28] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center text-sm sm:text-base"
                      >
                         <Image
                            src="/images/Icon.svg"
@@ -79,7 +79,7 @@ export default function Hero() {
                   >
                      <a
                         href="/contact"
-                        className="w-full sm:w-auto bg-white text-gray-900 hover:bg-gray-100 hover:text-gray-800 border-2 border-white hover:border-gray-300 px-8 py-4 rounded-lg font-semibold transition-all duration-300 inline-flex items-center justify-center cursor-pointer"
+                        className="w-full sm:w-auto bg-white text-gray-900 hover:bg-gray-100 hover:text-gray-800 border-2 border-white hover:border-gray-300 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-300 inline-flex items-center justify-center cursor-pointer text-sm sm:text-base"
                      >
                         Book Consultation
                      </a>

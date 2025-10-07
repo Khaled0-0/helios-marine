@@ -5,6 +5,7 @@ import BoatsSection from './components/BoatsSection';
 import FeaturesSection from './components/FeaturesSection';
 import HeritageSection from './components/HeritageSection';
 import ExperienceSection from './components/ExperienceSection';
+import TestimonialsSection from './components/TestimonialsSection';
 
 export default function Home() {
   return (
@@ -29,6 +30,9 @@ export default function Home() {
 
         {/* Section 7: Experience - Experience the sea with three experience cards */}
         <ExperienceSection />
+
+        {/* Section 8: Testimonials - Voices from the water with customer testimonials */}
+        <TestimonialsSection />
       </main>
     </div>
   );

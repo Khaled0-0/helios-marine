@@ -57,25 +57,23 @@ export default function BoatsSection() {
   return (
     <section className="py-24 bg-white">
       <Container>
-        <div className="text-center mb-16">
-          {/* Section Header */}
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
-            <h2 className="font-serif italic text-4xl sm:text-5xl md:text-6xl text-[#0B1D2C] mb-6">
-              Featured Models
-            </h2>
-            <p className="text-lg flex justify-center sm:text-xl text-gray-600 max-w-3xl mx-auto xl:whitespace-nowrap leading-relaxed">
-              Discover our selection of premium Nordkapp boats, each engineered for performance and luxury.
-            </p>
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center mb-16"
+        >
+          <h2 className="font-serif italic text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#0B1D2C] mb-4 sm:mb-6">
+            Featured Models
+          </h2>
+          <p className="text-sm sm:text-lg md:text-xl text-gray-600 mx-auto leading-relaxed px-4 sm:px-0">
+            Discover our selection of premium Nordkapp boats, each engineered for performance and luxury.
+          </p>
+        </motion.div>
 
         {/* Boat Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
           {boatModels.map((boat, index) => (
             <motion.div
               key={boat.id}
@@ -98,7 +96,7 @@ export default function BoatsSection() {
                 transition={{ duration: 0.3, ease: "easeOut" }}
               >
                 {/* Boat Image */}
-                <div className="relative h-64 sm:h-72 overflow-hidden">
+                <div className="relative h-56 sm:h-64 md:h-72 overflow-hidden">
                   <Image
                     src={boat.image}
                     alt={boat.name}
@@ -113,14 +111,14 @@ export default function BoatsSection() {
                 </div>
 
                 {/* Card Content */}
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   {/* Boat Name */}
-                  <h3 className="font-serif italic text-xl font-semibold text-[#0B1D2C] mb-4">
+                  <h3 className="font-serif italic text-lg sm:text-xl font-semibold text-[#0B1D2C] mb-3 sm:mb-4">
                     {boat.name}
                   </h3>
 
                   {/* Specifications Grid */}
-                  <div className="grid grid-cols-2 gap-4 mb-6 justify-items-start">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6 justify-items-start">
                     {/* Top Speed */}
                     <div className="flex items-center space-x-3">
                       <SpecIcon icon="/images/speed-i.svg" alt="Speed" />

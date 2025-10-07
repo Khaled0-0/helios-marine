@@ -17,13 +17,13 @@ export default function AboutSection() {
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className="order-2 lg:order-1"
           >
-            <h2 className="font-serif italic text-3xl sm:text-4xl md:text-[42px] text-[#0B1D2C] mb-6 leading-tight xl:whitespace-nowrap">
+            <h2 className="font-serif italic text-2xl sm:text-3xl md:text-4xl lg:text-[42px] text-[#0B1D2C] mb-4 sm:mb-6 leading-tight xl:whitespace-nowrap">
               Beyond boats, it&apos;s a lifestyle.
             </h2>
-            <p className="text-base sm:text-lg text-gray-700 mb-3 max-w-2xl">
+            <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-2 sm:mb-3 max-w-2xl">
               Nordkapp blends power, safety, and Scandinavian elegance.
             </p>
-            <p className="text-base sm:text-lg text-gray-700 mb-10 max-w-2xl">
+            <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-6 sm:mb-8 md:mb-10 max-w-2xl">
               Every voyage becomes an experience where precision engineering meets the freedom of open waters.
             </p>
 
@@ -41,9 +41,9 @@ export default function AboutSection() {
 
           {/* Right: Images collage */}
           <div className="order-1 lg:order-2">
-            <div className="flex gap-[10px] h-[320px] sm:h-[400px] md:h-[480px]">
+            <div className="flex gap-[8px] sm:gap-[10px] h-[280px] sm:h-[320px] md:h-[400px] lg:h-[480px]">
               {/* Left column - two stacked images */}
-              <div className="flex flex-col gap-[10px] flex-[1.5]">
+              <div className="flex flex-col gap-[8px] sm:gap-[10px] flex-[1.5]">
                 {/* Top-left */}
                 <motion.div
                   initial={{ y: 16, opacity: 0 }}
@@ -119,7 +119,7 @@ export default function AboutSection() {
                 className="flex-[1.5]"
               >
                 <motion.div
-                  className="relative h-[180px] top-17 md:top-28 md:h-[280px] rounded-xl overflow-hidden shadow-md border-2 border-transparent transition-all duration-300"
+                  className="relative h-[140px] sm:h-[160px] md:h-[180px] lg:h-[200px] top-14 sm:top-16 md:top-20 lg:top-24 xl:top-28 rounded-xl overflow-hidden shadow-md border-2 border-transparent transition-all duration-300"
                   whileHover={{
                     scale: 1.02,
                     borderColor: "#0B1D2C",

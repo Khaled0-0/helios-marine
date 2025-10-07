@@ -43,14 +43,14 @@ export default function Header() {
          className="fixed top-0 left-0 right-0 z-[90] bg-black/20 backdrop-blur-md"
       >
          <Container>
-            <div className="flex items-center justify-between h-20">
+            <div className="flex items-center justify-between h-16 sm:h-20">
                {/* Logo */}
                <Link
                   href="/"
-                  className="flex items-center space-x-3 group"
+                  className="flex items-center space-x-2 sm:space-x-3 group"
                   onClick={handleLinkClick}
                >
-                  <div className="w-10 h-10 relative overflow-hidden rounded-xl">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 relative overflow-hidden rounded-xl">
                      <Image
                         src="/images/logo 1.png"
                         alt="Helios Marine Logo"
@@ -61,11 +61,11 @@ export default function Header() {
                      {/* Shine effect overlay */}
                      <div className="shine-overlay pointer-events-none rounded-lg" aria-hidden="true" />
                   </div>
-                  <div className="flex flex-col -space-y-0.7">
-                     <h1 className="text-white text-lg font-serif font-semibold leading-tight !not-italic">Helios Marine</h1>
-                     <p className="text-white/70 text-xs flex items-center gap-2">
+                  <div className="flex flex-col -space-y-0.5 sm:-space-y-0.7">
+                     <h1 className="text-white text-sm sm:text-lg font-serif font-semibold leading-tight !not-italic">Helios Marine</h1>
+                     <p className="text-white/70 text-[10px] sm:text-xs flex items-center gap-1 sm:gap-2">
                         Authorized Nordkapp Dealer
-                        <Image src="/images/Icon (1).svg" alt="decorative waves" width={12} height={12} />
+                        <Image src="/images/Icon (1).svg" alt="decorative waves" width={10} height={10} className="sm:w-3 sm:h-3" />
                      </p>
                   </div>
                </Link>
