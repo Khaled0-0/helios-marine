@@ -1,18 +1,22 @@
 import Header from './components/Header';
 import Hero from './components/Hero';
 import AboutSection from './components/AboutSection';
+import BoatsSection from './components/BoatsSection';
 
 export default function Home() {
   return (
     <div className="min-h-screen">
+      {/* Section 1: Header */}
       <Header />
       <main>
-        {/* Section 1: Header - ✅ Complete */}
-        {/* Section 2: Hero - ✅ Complete - Ready for your yacht image */}
+        {/* Section 2: Hero */}
         <Hero />
 
-        {/* Section 3: About - Figma-matched, responsive, animated */}
+        {/* Section 3: About */}
         <AboutSection />
+
+        {/* Section 4: Boats - Featured models with cards */}
+        <BoatsSection />
       </main>
     </div>
   );

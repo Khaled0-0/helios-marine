@@ -1,109 +1,211 @@
+"use client";
+
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 import Container from './ui/Container';
 import Button from './ui/Button';
-import { CheckIcon } from './ui/Icons';
-import { boats } from '../data/boats';
+
+const boatModels = [
+  {
+    id: 1,
+    name: "Nordkapp 760 Sport",
+    image: "/images/ImageWithFallback.png",
+    specs: {
+      topSpeed: "45 knots",
+      length: "7.6m",
+      capacity: "8 persons",
+      enginePower: "300 HP"
+    }
+  },
+  {
+    id: 2,
+    name: "Nordkapp 840 Sport",
+    image: "/images/ImageWithFallback(1).png",
+    specs: {
+      topSpeed: "50 knots",
+      length: "8.4m",
+      capacity: "10 persons",
+      enginePower: "400 HP"
+    }
+  },
+  {
+    id: 3,
+    name: "Nordkapp 680 RS",
+    image: "/images/ImageWithFallback(2).png",
+    specs: {
+      topSpeed: "42 knots",
+      length: "6.8m",
+      capacity: "6 persons",
+      enginePower: "250 HP"
+    }
+  }
+];
+
+const SpecIcon = ({ icon, alt }: { icon: string; alt: string }) => (
+  <div className="w-4 h-4 flex items-center justify-center">
+    <Image
+      src={icon}
+      alt={alt}
+      width={24}
+      height={24}
+      className="object-contain"
+    />
+  </div>
+);
 
 export default function BoatsSection() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-24 bg-white">
       <Container>
-        {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-body-semibold-l mb-6 text-body">
-            Our Premium Boat Collection
-          </h2>
-          <p className="text-body-regular-md text-gray-600 max-w-4xl mx-auto">
-            Discover our carefully curated selection of boats, yachts, and marine vessels 
-            designed for every type of water adventure.
-          </p>
+          {/* Section Header */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <h2 className="font-serif italic text-4xl sm:text-5xl md:text-6xl text-[#0B1D2C] mb-6">
+              Featured Models
+            </h2>
+            <p className="text-lg flex justify-center sm:text-xl text-gray-600 max-w-3xl mx-auto xl:whitespace-nowrap leading-relaxed">
+              Discover our selection of premium Nordkapp boats, each engineered for performance and luxury.
+            </p>
+          </motion.div>
         </div>
 
-        {/* Boats Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {boats.map((boat) => (
-            <div
+        {/* Boat Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {boatModels.map((boat, index) => (
+            <motion.div
               key={boat.id}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group"
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.2,
+                ease: "easeOut"
+              }}
+              className="group"
             >
-              {/* Image */}
-              <div className="relative h-64 bg-gradient-to-br from-blue-400 to-blue-600 overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-white text-6xl group-hover:scale-110 transition-transform duration-300">⛵</div>
-                </div>
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
-                  <span className="text-body-md-small font-semibold text-gray-900">{boat.type}</span>
-                </div>
-                {boat.condition && (
-                  <div className="absolute top-4 left-4">
-                    <span className={`px-2 py-1 rounded-full text-body-md-small font-semibold ${
-                      boat.condition === 'new' 
-                        ? 'bg-green-100 text-green-800' 
-                        : boat.condition === 'used'
-                        ? 'bg-yellow-100 text-yellow-800'
-                        : 'bg-blue-100 text-blue-800'
-                    }`}>
-                      {boat.condition}
-                    </span>
-                  </div>
-                )}
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-h5 font-semibold mb-3 text-body group-hover:text-primary transition-colors duration-200">
-                  {boat.name}
-                </h3>
-                
-                {boat.description && (
-                  <p className="text-body-regular text-gray-600 mb-4 line-clamp-2">
-                    {boat.description}
-                  </p>
-                )}
-
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-price-sm font-bold text-primary">{boat.price}</span>
-                  <div className="text-body-xs text-gray-500 text-right">
-                    <div>{boat.length}</div>
-                    <div>{boat.capacity}</div>
-                  </div>
+              <motion.div
+                className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500"
+                whileHover={{
+                  y: -8,
+                  scale: 1.02
+                }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                {/* Boat Image */}
+                <div className="relative h-64 sm:h-72 overflow-hidden">
+                  <Image
+                    src={boat.image}
+                    alt={boat.name}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0"
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
                 </div>
 
-                {/* Features */}
-                <div className="space-y-3 mb-6">
-                  {boat.features.slice(0, 3).map((feature, index) => (
-                    <div key={index} className="flex items-center text-body-small-md text-gray-600">
-                      <CheckIcon size={16} className="text-primary mr-3 flex-shrink-0" />
-                      <span className="truncate">{feature}</span>
+                {/* Card Content */}
+                <div className="p-6">
+                  {/* Boat Name */}
+                  <h3 className="font-serif italic text-xl font-semibold text-[#0B1D2C] mb-4">
+                    {boat.name}
+                  </h3>
+
+                  {/* Specifications Grid */}
+                  <div className="grid grid-cols-2 gap-4 mb-6 justify-items-start">
+                    {/* Top Speed */}
+                    <div className="flex items-center space-x-3">
+                      <SpecIcon icon="/images/speed-i.svg" alt="Speed" />
+                      <div>
+                        <div className="text-sm font-semibold text-[#0B1D2C]">
+                          {boat.specs.topSpeed}
+                        </div>
+                        <div className="text-xs text-gray-600">Top Speed</div>
+                      </div>
                     </div>
-                  ))}
-                  {boat.features.length > 3 && (
-                    <div className="text-body-xs text-gray-500">
-                      +{boat.features.length - 3} more features
-                    </div>
-                  )}
-                </div>
 
-                {/* Action Button */}
-                <Button 
-                  href={`/boats/${boat.id}`}
-                  className="w-full justify-center bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
-                >
-                  View Details
-                </Button>
-              </div>
-            </div>
+                    {/* Length */}
+                    <div className="flex items-center space-x-3">
+                      <SpecIcon icon="/images/anchor-i.svg" alt="Length" />
+                      <div>
+                        <div className="text-sm font-semibold text-[#0B1D2C]">
+                          {boat.specs.length}
+                        </div>
+                        <div className="text-xs text-gray-600">Length</div>
+                      </div>
+                    </div>
+
+                    {/* Capacity */}
+                    <div className="flex items-center space-x-3">
+                      <SpecIcon icon="/images/persons-i.svg" alt="Capacity" />
+                      <div>
+                        <div className="text-sm font-semibold text-[#0B1D2C]">
+                          {boat.specs.capacity}
+                        </div>
+                        <div className="text-xs text-gray-600">Capacity</div>
+                      </div>
+                    </div>
+
+                    {/* Engine Power */}
+                    <div className="flex items-center space-x-3">
+                      <SpecIcon icon="/images/lightning-i.svg" alt="Engine Power" />
+                      <div>
+                        <div className="text-sm font-semibold text-[#0B1D2C]">
+                          {boat.specs.enginePower}
+                        </div>
+                        <div className="text-xs text-gray-600">Engine Power</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* View Details Button */}
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Button
+                      href={`/boats/${boat.id}`}
+                      className="w-full bg-[#0B1D2C] hover:bg-[#0A1A28] text-white py-3 rounded-lg font-semibold transition-all duration-300"
+                    >
+                      View Details
+                    </Button>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </motion.div>
           ))}
         </div>
 
-        {/* View All Button */}
-        <div className="text-center mt-16">
-          <Button 
-            href="/boats"
-            className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
+        {/* View All Models Button */}
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+          className="text-center"
+        >
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
           >
-            View All Boats
-          </Button>
-        </div>
+            <a
+              href="/boats"
+              className="inline-block bg-white text-[#0B1D2C] border-2 border-[#0B1D2C] hover:bg-[#0B1D2C] hover:text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 cursor-pointer"
+            >
+              View All Models
+            </a>
+          </motion.div>
+        </motion.div>
       </Container>
     </section>
   );
