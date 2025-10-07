@@ -2,6 +2,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import AboutSection from './components/AboutSection';
 import BoatsSection from './components/BoatsSection';
+import FeaturesSection from './components/FeaturesSection';
 
 export default function Home() {
   return (
@@ -17,6 +18,9 @@ export default function Home() {
 
         {/* Section 4: Boats - Featured models with cards */}
         <BoatsSection />
+
+        {/* Section 5: Features - Services and benefits */}
+        <FeaturesSection />
       </main>
     </div>
   );
