@@ -52,16 +52,29 @@ export default function AboutSection() {
                   transition={{ duration: 0.5, delay: 0.1 }}
                   className="flex-1"
                 >
-                  <div className="relative h-full rounded-xl overflow-hidden shadow-md">
+                  <motion.div
+                    className="relative h-full rounded-xl overflow-hidden shadow-md border-2 border-transparent transition-all duration-500"
+                    whileHover={{
+                      scale: 1.02,
+                      borderColor: "#0B1D2C",
+                      boxShadow: "0 20px 40px rgba(11, 29, 44, 0.15)"
+                    }}
+                    transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                  >
                     <Image
                       src="/images/ImageWithFallback(2).png"
                       alt="Sailing crew"
                       fill
-                      className="object-cover"
+                      className="object-cover transition-transform duration-500 ease-out"
                       sizes="(min-width: 1024px) 260px, (min-width: 640px) 50vw, 100vw"
                       priority
                     />
-                  </div>
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0"
+                      whileHover={{ opacity: 1 }}
+                      transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                    />
+                  </motion.div>
                 </motion.div>
 
                 {/* Bottom-left */}
@@ -72,15 +85,28 @@ export default function AboutSection() {
                   transition={{ duration: 0.5, delay: 0.2 }}
                   className="flex-1"
                 >
-                  <div className="relative h-full rounded-xl overflow-hidden shadow-md">
+                  <motion.div
+                    className="relative h-full rounded-xl overflow-hidden shadow-md border-2 border-transparent transition-all duration-500"
+                    whileHover={{
+                      scale: 1.02,
+                      borderColor: "#0B1D2C",
+                      boxShadow: "0 20px 40px rgba(11, 29, 44, 0.15)"
+                    }}
+                    transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                  >
                     <Image
                       src="/images/ImageWithFallback(3).png"
                       alt="Harbor yachts"
                       fill
-                      className="object-cover"
+                      className="object-cover transition-transform duration-500 ease-out"
                       sizes="(min-width: 1024px) 260px, (min-width: 640px) 50vw, 100vw"
                     />
-                  </div>
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0"
+                      whileHover={{ opacity: 1 }}
+                      transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                    />
+                  </motion.div>
                 </motion.div>
               </div>
 
@@ -92,15 +118,28 @@ export default function AboutSection() {
                 transition={{ duration: 0.6, delay: 0.25 }}
                 className="flex-[1.5]"
               >
-                <div className="relative h-[180px] top-17 md:top-28 md:h-[280px]  rounded-xl overflow-hidden shadow-md">
+                <motion.div
+                  className="relative h-[180px] top-17 md:top-28 md:h-[280px] rounded-xl overflow-hidden shadow-md border-2 border-transparent transition-all duration-300"
+                  whileHover={{
+                    scale: 1.02,
+                    borderColor: "#0B1D2C",
+                    boxShadow: "0 20px 40px rgba(11, 29, 44, 0.15)"
+                  }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                >
                   <Image
                     src="/images/ImageWithFallback(1).png"
                     alt="Sunset at sea"
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-300 hover:scale-105"
                     sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw"
                   />
-                </div>
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0"
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                  />
+                </motion.div>
               </motion.div>
             </div>
           </div>
