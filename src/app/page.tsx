@@ -6,6 +6,7 @@ import FeaturesSection from './components/FeaturesSection';
 import HeritageSection from './components/HeritageSection';
 import ExperienceSection from './components/ExperienceSection';
 import TestimonialsSection from './components/TestimonialsSection';
+import ContactSection from './components/ContactSection';
 
 export default function Home() {
   return (
@@ -33,6 +34,9 @@ export default function Home() {
 
         {/* Section 8: Testimonials - Voices from the water with customer testimonials */}
         <TestimonialsSection />
+
+        {/* Section 9: Contact - Your journey begins on the water */}
+        <ContactSection />
       </main>
     </div>
   );
