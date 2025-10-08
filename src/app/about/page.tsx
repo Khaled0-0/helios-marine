@@ -1,6 +1,7 @@
 import Header from '../components/Header';
 import AboutHeroSection from '../components/AboutHeroSection';
 import AboutHeritageSection from '../components/AboutHeritageSection';
+import AboutStorySection from '../components/AboutStorySection';
 import Footer from '../components/Footer';
 
 export default function About() {
@@ -15,6 +16,9 @@ export default function About() {
 
             {/* Heritage Section */}
             <AboutHeritageSection />
+
+            {/* Story Section */}
+            <AboutStorySection />
          </main>
 
          {/* Footer */}
