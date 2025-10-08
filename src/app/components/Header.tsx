@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Container from './ui/Container';
 import Button from './ui/Button';
@@ -13,6 +14,7 @@ import { navigationItems } from '../data/navigation';
 export default function Header() {
    const [isMenuOpen, setIsMenuOpen] = useState(false);
    const [isMounted, setIsMounted] = useState(false);
+   const pathname = usePathname();
 
    const handleMenuToggle = () => {
       setIsMenuOpen(!isMenuOpen);
@@ -72,16 +74,21 @@ export default function Header() {
 
                {/* Desktop Navigation */}
                <nav className="hidden lg:flex items-center space-x-10">
-                  {navigationItems.map((item) => (
-                     <Link
-                        key={item.name}
-                        href={item.href}
-                        className="text-white hover:text-gray-200 transition-colors duration-200 relative group font-medium"
-                     >
-                        {item.name}
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-200 group-hover:w-full"></span>
-                     </Link>
-                  ))}
+                  {navigationItems.map((item) => {
+                     const isActive = pathname === item.href;
+                     return (
+                        <Link
+                           key={item.name}
+                           href={item.href}
+                           className={`text-white hover:text-gray-200 transition-colors duration-200 relative group font-medium ${isActive ? 'text-white' : ''
+                              }`}
+                        >
+                           {item.name}
+                           <span className={`absolute -bottom-1 left-0 h-0.5 bg-white transition-all duration-200 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                              }`}></span>
+                        </Link>
+                     );
+                  })}
                </nav>
 
                {/* Desktop CTA Button */}
@@ -142,27 +149,33 @@ export default function Header() {
                         >
                            <nav className="mx-3 rounded-2xl border border-white/15 bg-gradient-to-b from-black/70 to-black/60 backdrop-blur-md p-2 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
                               <div className="px-2 py-1">
-                                 {navigationItems.map((item, index) => (
-                                    <motion.div
-                                       key={item.name}
-                                       initial={{ x: -20, opacity: 0 }}
-                                       animate={{ x: 0, opacity: 1 }}
-                                       exit={{ x: -20, opacity: 0 }}
-                                       transition={{
-                                          duration: 0.3,
-                                          delay: index * 0.1,
-                                          ease: "easeOut"
-                                       }}
-                                    >
-                                       <Link
-                                          href={item.href}
-                                          className="block text-white/90 hover:text-white hover:bg-white/10 active:bg-white/15 transition-all duration-300 py-3.5 px-3 rounded-xl font-medium text-[17px] tracking-wide hover:scale-[1.02]"
-                                          onClick={handleLinkClick}
+                                 {navigationItems.map((item, index) => {
+                                    const isActive = pathname === item.href;
+                                    return (
+                                       <motion.div
+                                          key={item.name}
+                                          initial={{ x: -20, opacity: 0 }}
+                                          animate={{ x: 0, opacity: 1 }}
+                                          exit={{ x: -20, opacity: 0 }}
+                                          transition={{
+                                             duration: 0.3,
+                                             delay: index * 0.1,
+                                             ease: "easeOut"
+                                          }}
                                        >
-                                          {item.name}
-                                       </Link>
-                                    </motion.div>
-                                 ))}
+                                          <Link
+                                             href={item.href}
+                                             className={`block transition-all duration-300 py-3.5 px-3 rounded-xl font-medium text-[17px] tracking-wide hover:scale-[1.02] ${isActive
+                                                ? 'text-white bg-white/20'
+                                                : 'text-white/90 hover:text-white hover:bg-white/10 active:bg-white/15'
+                                                }`}
+                                             onClick={handleLinkClick}
+                                          >
+                                             {item.name}
+                                          </Link>
+                                       </motion.div>
+                                    );
+                                 })}
                               </div>
                               <motion.div
                                  className="mt-2 border-t border-white/10"

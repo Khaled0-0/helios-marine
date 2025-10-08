@@ -20,7 +20,7 @@ const boatModels = [
   {
     id: 2,
     name: "Nordkapp 840 Sport",
-    image: "/images/ImageWithFallback(1).png",
+    image: "/images/ImageWithFallback(6).png",
     specs: {
       topSpeed: "50 knots",
       length: "8.4m",
@@ -31,7 +31,7 @@ const boatModels = [
   {
     id: 3,
     name: "Nordkapp 680 RS",
-    image: "/images/ImageWithFallback(2).png",
+    image: "/images/ImageWithFallback(8).png",
     specs: {
       topSpeed: "42 knots",
       length: "6.8m",
