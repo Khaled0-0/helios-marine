@@ -92,7 +92,7 @@ const InfoItem = ({ item, index }: { item: typeof showroomData[0]; index: number
 
 export default function AboutShowroomSection() {
    return (
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white overflow-x-clip">
          <Container>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                {/* Left Column - Text Content */}

@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import Container from './ui/Container';
 import Button from './ui/Button';
 
