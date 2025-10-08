@@ -4,6 +4,7 @@ import AboutHeritageSection from '../components/AboutHeritageSection';
 import AboutStorySection from '../components/AboutStorySection';
 import AboutNumbersSection from '../components/AboutNumbersSection';
 import AboutShowroomSection from '../components/AboutShowroomSection';
+import AboutCTASection from '../components/AboutCTASection';
 import Footer from '../components/Footer';
 
 export default function About() {
@@ -27,6 +28,9 @@ export default function About() {
 
             {/* Showroom Section */}
             <AboutShowroomSection />
+
+            {/* CTA Section */}
+            <AboutCTASection />
          </main>
 
          {/* Footer */}
