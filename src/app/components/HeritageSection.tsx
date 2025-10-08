@@ -71,7 +71,7 @@ export default function HeritageSection() {
    return (
       <section className="py-24 bg-white">
          <Container>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start lg:items-center xl:items-start">
                {/* Left: Content */}
                <motion.div
                   initial={{ y: 30, opacity: 0 }}
@@ -125,7 +125,7 @@ export default function HeritageSection() {
                         alt="Nordkapp boat on UAE waters with crew"
                         width={600}
                         height={400}
-                        className="w-full h-auto object-cover"
+                        className="w-full h-auto xl:h-[570px] object-cover md:h-[370px]"
                         sizes="(max-width: 1024px) 100vw, 50vw"
                         priority
                      />
