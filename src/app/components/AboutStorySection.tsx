@@ -38,27 +38,27 @@ const timelineData = [
 
 const TimelineItem = ({ item, index }: { item: typeof timelineData[0]; index: number }) => (
    <motion.div
-      initial={{ y: 30, opacity: 0 }}
+      initial={{ y: 20, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }}
-      className={`relative flex flex-col-reverse lg:flex-row items-center gap-8 lg:pt-3 lg:gap-30 mb-16 lg:mb-20 ${item.side === 'right' ? 'lg:flex-row-reverse' : 'lg:flex-row'
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.4, delay: index * 0.1, ease: "easeOut" }}
+      className={`relative flex flex-col-reverse lg:flex-row items-center gap-4 lg:gap-15 mb-8 lg:mb-20 ${item.side === 'right' ? 'lg:flex-row-reverse' : 'lg:flex-row'
          }`}
    >
       {/* Content Card */}
       <motion.div
-         initial={{ x: item.side === 'left' ? 50 : -50, opacity: 0 }}
+         initial={{ x: 0, opacity: 0 }}
          whileInView={{ x: 0, opacity: 1 }}
-         viewport={{ once: true, amount: 0.3 }}
-         transition={{ duration: 0.6, delay: index * 0.2 + 0.2, ease: "easeOut" }}
-         className={`w-full lg:flex-1 text-left max-w-sm sm:max-w-2xl lg:max-w-sm xl:max-w-lg`}
+         viewport={{ once: true, amount: 0.2 }}
+         transition={{ duration: 0.4, delay: index * 0.1, ease: "easeOut" }}
+         className={`w-full lg:flex-1 text-left max-w-sm sm:max-w-sm md:max-w-2xl lg:max-w-md xl:max-w-xl`}
       >
-         <div className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+         <div className="bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
             <div className="text-sm font-medium text-gray-500 mb-2">{item.chapter}</div>
-            <span className="text-xl sm:text-2xl font-serif !not-italic font-semibold text-black mb-3">
+            <span className="text-lg sm:text-xl md:text-2xl font-serif !not-italic font-semibold text-black mb-2 sm:mb-3">
                {item.title}
             </span>
-            <p className="text-gray-600 leading-relaxed mb-4">
+            <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-3 sm:mb-4">
                {item.description}
             </p>
             <div className={`flex items-center text-xs text-[#0B1D2C] font-medium justify-start`}>
@@ -75,16 +75,16 @@ const TimelineItem = ({ item, index }: { item: typeof timelineData[0]; index: nu
       </motion.div>
       {/* Year */}
       <motion.div
-         initial={{ scale: 0.8, opacity: 0 }}
+         initial={{ scale: 0.9, opacity: 0 }}
          whileInView={{ scale: 1, opacity: 1 }}
-         viewport={{ once: true, amount: 0.3 }}
-         transition={{ duration: 0.5, delay: index * 0.2 + 0.3, ease: "easeOut" }}
-         className={`flex-shrink-0 ${item.side === 'right' ? 'lg:ml-8' : 'lg:mr-8'}`}
+         viewport={{ once: true, amount: 0.2 }}
+         transition={{ duration: 0.3, delay: index * 0.1 + 0.2, ease: "easeOut" }}
+         className={`flex-shrink-0 ${item.side === 'right' ? 'lg:ml-8' : 'lg:mr-8'} lg:pt-3`}
       >
          <div className={`flex items-center gap-3 sm:gap-4 ${item.side === 'left' ? 'lg:flex-row-reverse' : 'flex-row'}`}>
             {/* create small line on the left side - only visible on small screens */}
             <div className="lg:hidden w-8 sm:w-10 h-0.5 bg-[#0B1D2C]"></div>
-            <div className="text-2xl sm:text-2xl font-serif italic font-bold text-[#0B1D2C]">
+            <div className="text-xl sm:text-2xl md:text-3xl font-serif italic font-bold text-[#0B1D2C]">
                {item.year}
             </div>
             {/* create small line next to the year */}
@@ -105,10 +105,18 @@ export default function AboutStorySection() {
    const [timelineHeight, setTimelineHeight] = useState(980);
 
    useEffect(() => {
-      if (timelineRef.current) {
-         const height = timelineRef.current.offsetHeight;
-         setTimelineHeight(height - 32); // Subtract icon height (h-8 = 32px)
-      }
+      const calculateHeight = () => {
+         if (timelineRef.current) {
+            const height = timelineRef.current.offsetHeight;
+            setTimelineHeight(height - 32); // Subtract icon height (h-8 = 32px)
+         }
+      };
+
+      // Calculate height on mount and when window resizes
+      calculateHeight();
+      window.addEventListener('resize', calculateHeight);
+
+      return () => window.removeEventListener('resize', calculateHeight);
    }, []);
 
    return (
@@ -116,10 +124,10 @@ export default function AboutStorySection() {
          <Container>
             {/* Section Header */}
             <motion.div
-               initial={{ y: 30, opacity: 0 }}
+               initial={{ y: 20, opacity: 0 }}
                whileInView={{ y: 0, opacity: 1 }}
                viewport={{ once: true, amount: 0.2 }}
-               transition={{ duration: 0.6, ease: "easeOut" }}
+               transition={{ duration: 0.4, ease: "easeOut" }}
                className="text-center mb-16 lg:mb-20 max-w-4xl mx-auto"
             >
                <h2 className="font-serif italic text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#0B1D2C] mb-6 leading-tight">
@@ -167,15 +175,15 @@ export default function AboutStorySection() {
                </motion.div>
 
                {/* Timeline Items */}
-               <div className="space-y-0">
+               <div className="space-y-6 sm:space-y-8 lg:space-y-0">
                   {timelineData.map((item, index) => (
                      <div key={item.id} className="relative">
                         {/* Timeline Dot on the middle line - Hidden on mobile */}
                         <motion.div
                            initial={{ scale: 0 }}
                            whileInView={{ scale: 1 }}
-                           viewport={{ once: true, amount: 0.3 }}
-                           transition={{ duration: 0.4, delay: index * 0.2 + 0.4, ease: "easeOut" }}
+                           viewport={{ once: true, amount: 0.2 }}
+                           transition={{ duration: 0.3, delay: index * 0.1 + 0.3, ease: "easeOut" }}
                            className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 z-10"
                            style={{ top: '50%' }}
                         >
