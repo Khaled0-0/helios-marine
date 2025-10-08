@@ -8,6 +8,7 @@ import ExperienceSection from './components/ExperienceSection';
 import TestimonialsSection from './components/TestimonialsSection';
 import ContactSection from './components/ContactSection';
 import FAQSection from './components/FAQSection';
+import Footer from './components/Footer';
 
 export default function Home() {
   return (
@@ -42,6 +43,9 @@ export default function Home() {
         {/* Section 10: FAQ - Frequently Asked Questions */}
         <FAQSection />
       </main>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
