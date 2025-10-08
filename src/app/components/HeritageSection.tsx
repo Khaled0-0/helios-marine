@@ -71,7 +71,7 @@ export default function HeritageSection() {
    return (
       <section className="py-24 bg-white">
          <Container>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start lg:items-center xl:items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start lg:items-start">
                {/* Left: Content */}
                <motion.div
                   initial={{ y: 30, opacity: 0 }}
@@ -114,27 +114,33 @@ export default function HeritageSection() {
                   className="order-1 lg:order-2"
                >
                   <motion.div
-                     className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl"
+                     className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl group"
                      whileHover={{
-                        scale: 1.01
+                        scale: 1.02,
+                        transition: { duration: 0.3, ease: "easeOut" }
                      }}
-                     transition={{ duration: 0.3, ease: "easeOut" }}
                   >
                      <Image
                         src="/images/ImageWithFallback(4).png"
                         alt="Nordkapp boat on UAE waters with crew"
                         width={600}
                         height={400}
-                        className="w-full h-auto xl:h-[570px] object-cover md:h-[370px]"
+                        className="w-full h-auto xl:h-[570px] object-cover md:h-[370px] group-hover:scale-105 transition-transform duration-500"
                         sizes="(max-width: 1024px) 100vw, 50vw"
                         priority
                      />
 
                      {/* Overlay with establishment year */}
-                     <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 bg-[#0B1D2C] text-white px-3 py-2 sm:px-4 sm:py-3 rounded-lg sm:rounded-xl shadow-lg">
+                     <motion.div
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        whileInView={{ scale: 1, opacity: 1 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
+                        className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 bg-[#0B1D2C] text-white px-3 py-2 sm:px-4 sm:py-3 rounded-lg sm:rounded-xl shadow-lg"
+                     >
                         <div className="text-lg sm:text-2xl font-bold">1966</div>
                         <div className="text-xs sm:text-sm font-medium text-gray-300">Est. Norway</div>
-                     </div>
+                     </motion.div>
 
                      {/* Subtle gradient overlay */}
                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
