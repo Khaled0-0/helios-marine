@@ -57,7 +57,7 @@ export default function AboutCTASection() {
                   >
                      <Button
                         href="/boats"
-                        className="bg-[#0B1D2C] hover:bg-[#0A1A28] text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center text-lg min-w-[200px] justify-center"
+                        className="bg-[#0B1D2C] hover:bg-[#0A1A28] text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center text-lg min-w-[250px] justify-center"
                      >
                         Explore Our Boats
                      </Button>
@@ -70,7 +70,7 @@ export default function AboutCTASection() {
                   >
                      <Button
                         href="/contact"
-                        className="bg-[#0B1D2C] hover:bg-[#0A1A28] text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center text-lg min-w-[200px] justify-center"
+                        className="bg-[#0B1D2C] hover:bg-[#0A1A28] text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center text-lg min-w-[250px] justify-center"
                      >
                         Visit our Showroom
                      </Button>
