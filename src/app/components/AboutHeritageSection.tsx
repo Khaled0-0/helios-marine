@@ -57,7 +57,7 @@ export default function AboutHeritageSection() {
                   className="order-1 lg:order-2"
                >
                   <motion.div
-                     className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl group"
+                     className="relative rounded-xl sm:rounded-2xl overflow-visible shadow-xl sm:shadow-2xl group"
                      whileHover={{
                         scale: 1.02,
                         transition: { duration: 0.3, ease: "easeOut" }
@@ -68,7 +68,7 @@ export default function AboutHeritageSection() {
                         alt="Noble Emperor II yacht - Nordkapp heritage vessel"
                         width={600}
                         height={400}
-                        className="w-full h-auto xl:h-[500px] object-cover md:h-[400px] group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-auto xl:h-[500px] object-cover md:h-[400px] group-hover:scale-105 transition-transform duration-500 rounded-2xl"
                         sizes="(max-width: 1024px) 100vw, 50vw"
                         priority
                      />
@@ -79,15 +79,16 @@ export default function AboutHeritageSection() {
                         whileInView={{ scale: 1, opacity: 1 }}
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-                        className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm px-4 py-3 rounded-lg shadow-lg"
+                        className="absolute xl:-bottom-3 xl:-right-15 bg-white/95 backdrop-blur-sm xl:px-4 xl:py-3 py-1 px-2 flex flex-col justify-center items-start rounded-lg shadow-lg z-10 bottom-4 right-4 text-black"
                      >
-                        <div className="text-xl sm:text-2xl font-bold text-[#0B1D2C] italic">1966</div>
-                        <div className="text-xs sm:text-sm font-medium text-gray-600">Est. Norway</div>
+                        <div className="number-badge text-2xl">1966</div>
+                        <div className="number-badge-subtitle text-sm">Est. Norway</div>
                      </motion.div>
 
                      {/* Subtle gradient overlay */}
-                     <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent" />
+                     <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent rounded-" />
                   </motion.div>
+
                </motion.div>
             </div>
          </Container>

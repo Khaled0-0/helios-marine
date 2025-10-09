@@ -47,7 +47,7 @@ const StatCard = ({ stat, index }: { stat: typeof heritageStats[0]; index: numbe
       }}
       className="text-center"
    >
-      <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif italic font-bold text-[#0B1D2C] mb-1 sm:mb-2">
+      <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif italic font-bold text-[#0B1D2C] mb-1 sm:mb-2 number-badge">
          {stat.value}
       </div>
       <div className="text-xs sm:text-sm md:text-base text-gray-500 font-medium">
@@ -114,7 +114,7 @@ export default function HeritageSection() {
                   className="order-1 lg:order-2"
                >
                   <motion.div
-                     className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl group"
+                     className="relative rounded-xl sm:rounded-2xl overflow-visible shadow-xl sm:shadow-2xl group"
                      whileHover={{
                         scale: 1.02,
                         transition: { duration: 0.3, ease: "easeOut" }
@@ -122,10 +122,10 @@ export default function HeritageSection() {
                   >
                      <Image
                         src="/images/ImageWithFallback(4).png"
-                        alt="Nordkapp boat on UAE waters with crew"
+                        alt="Noble Emperor II yacht - Nordkapp heritage vessel"
                         width={600}
                         height={400}
-                        className="w-full h-auto xl:h-[570px] object-cover md:h-[370px] group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-auto xl:h-[500px] object-cover md:h-[400px] group-hover:scale-105 transition-transform duration-500 rounded-2xl"
                         sizes="(max-width: 1024px) 100vw, 50vw"
                         priority
                      />
@@ -136,15 +136,14 @@ export default function HeritageSection() {
                         whileInView={{ scale: 1, opacity: 1 }}
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-                        className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 bg-[#0B1D2C] text-white px-3 py-2 sm:px-4 sm:py-3 rounded-lg sm:rounded-xl shadow-lg"
+                        className="absolute xl:-bottom-3 xl:-right-15 bg-black text-white backdrop-blur-sm xl:px-4 xl:py-3 py-1 px-2 flex flex-col justify-center items-center rounded-lg shadow-lg z-10 bottom-4 right-4"
                      >
-                        <div className="text-lg sm:text-2xl font-bold">1966</div>
-                        <div className="text-xs sm:text-sm font-medium text-gray-300">Est. Norway</div>
+                        <div className="number-badge text-2xl">1966</div>
+                        <div className="number-badge-subtitle text-sm">Est. Norway</div>
                      </motion.div>
-
                      {/* Subtle gradient overlay */}
-                     <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
                   </motion.div>
+
                </motion.div>
             </div>
 

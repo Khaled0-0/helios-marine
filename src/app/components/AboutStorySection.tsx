@@ -55,9 +55,9 @@ const TimelineItem = ({ item, index }: { item: typeof timelineData[0]; index: nu
       >
          <div className="bg-white rounded-xl p-3 sm:p-4 md:p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
             <div className="text-sm font-medium text-gray-500 mb-2">{item.chapter}</div>
-            <span className="text-lg sm:text-xl md:text-2xl font-serif !not-italic font-semibold text-black mb-2 sm:mb-3">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-serif !not-italic font-semibold text-black mb-2 sm:mb-3">
                {item.title}
-            </span>
+            </h3>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-3 sm:mb-4">
                {item.description}
             </p>

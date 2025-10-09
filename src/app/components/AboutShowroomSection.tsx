@@ -47,7 +47,7 @@ const InfoItem = ({ item, index }: { item: typeof showroomData[0]; index: number
          whileInView={{ y: 0, opacity: 1 }}
          viewport={{ once: true, amount: 0.3 }}
          transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }}
-         className="mb-8 lg:mb-12"
+         className="mb-5"
       >
          <div className="flex items-start gap-4">
             <motion.div
@@ -113,7 +113,7 @@ export default function AboutShowroomSection() {
                      Visit Our Marina Showroom
                   </motion.h2>
 
-                  <div className="space-y-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-5">
+                  <div className="space-y-0 grid grid-cols-1 gap-3">
                      {showroomData.map((item, index) => (
                         <InfoItem key={item.id} item={item} index={index} />
                      ))}
