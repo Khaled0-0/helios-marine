@@ -150,20 +150,21 @@ export default function BoatsCollection() {
                         transition={{ duration: 0.6, delay: 0.5 }}
                         className="flex justify-start"
                      >
-                        <div className="relative max-w-3xl w-full">
-                           <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                           <motion.input
-                              initial={{ scale: 0.95, opacity: 0 }}
-                              animate={{ scale: 1, opacity: 1 }}
-                              transition={{ duration: 0.4, delay: 0.6 }}
-                              whileFocus={{ scale: 1.02 }}
+                        <motion.div
+                           initial={{ scale: 0.95, opacity: 0 }}
+                           animate={{ scale: 1, opacity: 1 }}
+                           transition={{ duration: 0.4, delay: 0.6 }}
+                           className="relative max-w-3xl w-full"
+                        >
+                           <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none z-10" />
+                           <input
                               type="text"
                               placeholder="Search models..."
                               value={searchTerm}
                               onChange={(e) => setSearchTerm(e.target.value)}
-                              className="w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#bdcfdd] focus:border-transparent shadow-sm text-[#0B1D2C] placeholder-gray-500"
+                              className="w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#bdcfdd] focus:border-transparent shadow-sm text-[#0B1D2C] placeholder-gray-500 transition-all duration-200"
                            />
-                        </div>
+                        </motion.div>
                      </motion.div>
                   </motion.div>
                </motion.div>
