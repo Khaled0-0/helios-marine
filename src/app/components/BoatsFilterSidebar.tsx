@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FilterOptions } from '../types/yacht';
 import { bodyTypes, years } from '../data/yachts';
@@ -18,6 +18,20 @@ export default function BoatsFilterSidebar({
 }: BoatsFilterSidebarProps) {
    const [isBodyTypeOpen, setIsBodyTypeOpen] = useState(false);
    const [isYearOpen, setIsYearOpen] = useState(false);
+
+   // Local state for input values to allow free typing
+   const [minLengthInput, setMinLengthInput] = useState(filters.minLength.toString());
+   const [maxLengthInput, setMaxLengthInput] = useState(filters.maxLength.toString());
+   const [minPriceInput, setMinPriceInput] = useState(filters.minPrice.toString());
+   const [maxPriceInput, setMaxPriceInput] = useState(filters.maxPrice.toString());
+
+   // Sync local state when filters change from outside
+   useEffect(() => {
+      setMinLengthInput(filters.minLength.toString());
+      setMaxLengthInput(filters.maxLength.toString());
+      setMinPriceInput(filters.minPrice.toString());
+      setMaxPriceInput(filters.maxPrice.toString());
+   }, [filters.minLength, filters.maxLength, filters.minPrice, filters.maxPrice]);
 
    const handleFilterChange = (key: keyof FilterOptions, value: string | number) => {
       onFiltersChange({
@@ -236,11 +250,19 @@ export default function BoatsFilterSidebar({
                         type="number"
                         min="10"
                         max="50"
-                        value={filters.minLength}
+                        value={minLengthInput}
                         onChange={(e) => {
-                           const value = parseInt(e.target.value) || 10;
-                           if (value >= 10 && value <= 50 && value <= filters.maxLength) {
-                              handleFilterChange('minLength', value);
+                           setMinLengthInput(e.target.value);
+                        }}
+                        onBlur={(e) => {
+                           const value = parseInt(e.target.value);
+                           if (isNaN(value) || e.target.value === '') {
+                              setMinLengthInput('10');
+                              handleFilterChange('minLength', 10);
+                           } else {
+                              const constrainedValue = Math.max(10, Math.min(50, Math.min(value, filters.maxLength)));
+                              setMinLengthInput(constrainedValue.toString());
+                              handleFilterChange('minLength', constrainedValue);
                            }
                         }}
                         className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm text-[#0B1D2C] placeholder-gray-500"
@@ -259,11 +281,19 @@ export default function BoatsFilterSidebar({
                         type="number"
                         min="10"
                         max="50"
-                        value={filters.maxLength}
+                        value={maxLengthInput}
                         onChange={(e) => {
-                           const value = parseInt(e.target.value) || 50;
-                           if (value >= 10 && value <= 50 && value >= filters.minLength) {
-                              handleFilterChange('maxLength', value);
+                           setMaxLengthInput(e.target.value);
+                        }}
+                        onBlur={(e) => {
+                           const value = parseInt(e.target.value);
+                           if (isNaN(value) || e.target.value === '') {
+                              setMaxLengthInput('50');
+                              handleFilterChange('maxLength', 50);
+                           } else {
+                              const constrainedValue = Math.max(10, Math.min(50, Math.max(value, filters.minLength)));
+                              setMaxLengthInput(constrainedValue.toString());
+                              handleFilterChange('maxLength', constrainedValue);
                            }
                         }}
                         className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm text-[#0B1D2C] placeholder-gray-500"
@@ -360,11 +390,19 @@ export default function BoatsFilterSidebar({
                         step="0.1"
                         min="0"
                         max="10"
-                        value={filters.minPrice}
+                        value={minPriceInput}
                         onChange={(e) => {
-                           const value = parseFloat(e.target.value) || 0;
-                           if (value >= 0 && value <= 10 && value <= filters.maxPrice) {
-                              handleFilterChange('minPrice', value);
+                           setMinPriceInput(e.target.value);
+                        }}
+                        onBlur={(e) => {
+                           const value = parseFloat(e.target.value);
+                           if (isNaN(value) || e.target.value === '') {
+                              setMinPriceInput('0');
+                              handleFilterChange('minPrice', 0);
+                           } else {
+                              const constrainedValue = Math.max(0, Math.min(10, Math.min(value, filters.maxPrice)));
+                              setMinPriceInput(constrainedValue.toString());
+                              handleFilterChange('minPrice', constrainedValue);
                            }
                         }}
                         className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm text-[#0B1D2C] placeholder-gray-500"
@@ -384,11 +422,19 @@ export default function BoatsFilterSidebar({
                         step="0.1"
                         min="0"
                         max="10"
-                        value={filters.maxPrice}
+                        value={maxPriceInput}
                         onChange={(e) => {
-                           const value = parseFloat(e.target.value) || 10;
-                           if (value >= 0 && value <= 10 && value >= filters.minPrice) {
-                              handleFilterChange('maxPrice', value);
+                           setMaxPriceInput(e.target.value);
+                        }}
+                        onBlur={(e) => {
+                           const value = parseFloat(e.target.value);
+                           if (isNaN(value) || e.target.value === '') {
+                              setMaxPriceInput('10');
+                              handleFilterChange('maxPrice', 10);
+                           } else {
+                              const constrainedValue = Math.max(0, Math.min(10, Math.max(value, filters.minPrice)));
+                              setMaxPriceInput(constrainedValue.toString());
+                              handleFilterChange('maxPrice', constrainedValue);
                            }
                         }}
                         className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm text-[#0B1D2C] placeholder-gray-500"

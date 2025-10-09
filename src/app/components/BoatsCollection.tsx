@@ -222,7 +222,7 @@ export default function BoatsCollection() {
                                  animate={{ opacity: 1, y: 0, scale: 1 }}
                                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
                                  transition={{ duration: 0.2 }}
-                                 className="absolute top-full right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10 min-w-[200px]"
+                                 className="absolute top-full right-0 sm:right-0 sm:left-auto left-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10 min-w-[200px] max-w-[calc(100vw-2rem)]"
                               >
                                  {sortOptions.map((option, index) => (
                                     <motion.button
