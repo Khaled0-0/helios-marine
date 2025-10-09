@@ -16,6 +16,9 @@ export default function Header() {
    const [isMounted, setIsMounted] = useState(false);
    const pathname = usePathname();
 
+   // Check if we're on boats or contact pages for different styling
+   const isWhiteHeader = pathname === '/boats' || pathname === '/contact';
+
    const handleMenuToggle = () => {
       setIsMenuOpen(!isMenuOpen);
    };
@@ -42,7 +45,10 @@ export default function Header() {
          initial={{ y: -100, opacity: 0 }}
          animate={{ y: 0, opacity: 1 }}
          transition={{ duration: 0.6, ease: "easeOut" }}
-         className="fixed top-0 left-0 right-0 z-[90] bg-black/20 backdrop-blur-md"
+         className={`fixed top-0 left-0 right-0 z-[90] ${isWhiteHeader
+            ? 'bg-white shadow-sm'
+            : 'bg-black/20 backdrop-blur-md'
+            }`}
       >
          <Container>
             <div className="flex items-center justify-between h-16 sm:h-20">
@@ -64,10 +70,19 @@ export default function Header() {
                      <div className="shine-overlay pointer-events-none rounded-lg" aria-hidden="true" />
                   </div>
                   <div className="flex flex-col -space-y-0.5 sm:-space-y-0.7">
-                     <h1 className="text-white text-sm sm:text-lg font-serif font-semibold leading-tight !not-italic">Helios Marine</h1>
-                     <p className="text-white/70 text-[10px] sm:text-xs flex items-center gap-1 sm:gap-2">
+                     <h1 className={`text-sm sm:text-lg font-serif font-semibold leading-tight !not-italic ${isWhiteHeader ? 'text-[#0B1D2C]' : 'text-white'
+                        }`}>Helios Marine</h1>
+                     <p className={`text-[10px] sm:text-xs flex items-center gap-1 sm:gap-2 ${isWhiteHeader ? 'text-gray-600' : 'text-white/70'
+                        }`}>
                         Authorized Nordkapp Dealer
-                        <Image src="/images/Icon (1).svg" alt="decorative waves" width={10} height={10} className="sm:w-3 sm:h-3" />
+                        <Image
+                           src="/images/Icon (1).svg"
+                           alt="decorative waves"
+                           width={10}
+                           height={10}
+                           className={`sm:w-3 sm:h-3 ${isWhiteHeader ? 'filter brightness-0' : ''
+                              }`}
+                        />
                      </p>
                   </div>
                </Link>
@@ -80,12 +95,14 @@ export default function Header() {
                         <Link
                            key={item.name}
                            href={item.href}
-                           className={`text-white hover:text-gray-200 transition-colors duration-200 relative group font-medium ${isActive ? 'text-white' : ''
+                           className={`transition-colors duration-200 relative group font-medium ${isWhiteHeader
+                              ? `text-[#0B1D2C] hover:text-[#0B1D2C] ${isActive ? 'text-[#0B1D2C]' : 'text-gray-600'}`
+                              : `text-white hover:text-gray-200 ${isActive ? 'text-white' : ''}`
                               }`}
                         >
                            {item.name}
-                           <span className={`absolute -bottom-1 left-0 h-0.5 bg-white transition-all duration-200 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                              }`}></span>
+                           <span className={`absolute -bottom-1 left-0 h-0.5 transition-all duration-200 ${isWhiteHeader ? 'bg-[#0B1D2C]' : 'bg-white'
+                              } ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                         </Link>
                      );
                   })}
@@ -111,7 +128,10 @@ export default function Header() {
                {/* Mobile menu button */}
                <button
                   onClick={handleMenuToggle}
-                  className={`lg:hidden p-2 rounded-lg text-white hover:text-gray-200 hover:bg-white/10 transition-colors duration-200 cursor-pointer ${isMenuOpen ? 'bg-white/20 ring-1 ring-white/30' : ''}`}
+                  className={`lg:hidden p-2 rounded-lg transition-colors duration-200 cursor-pointer ${isWhiteHeader
+                     ? `text-[#0B1D2C] hover:text-[#0B1D2C] hover:bg-gray-100 ${isMenuOpen ? 'bg-gray-100 ring-1 ring-gray-300' : ''}`
+                     : `text-white hover:text-gray-200 hover:bg-white/10 ${isMenuOpen ? 'bg-white/20 ring-1 ring-white/30' : ''}`
+                     }`}
                   aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
                   aria-expanded={isMenuOpen}
                >
@@ -131,7 +151,8 @@ export default function Header() {
                         {/* Click-away overlay */}
                         <motion.div
                            key="overlay"
-                           className="fixed inset-0 z-[70] bg-black/30 backdrop-blur-sm lg:hidden"
+                           className={`fixed inset-0 z-[70] backdrop-blur-sm lg:hidden ${isWhiteHeader ? 'bg-gray-500/20' : 'bg-black/30'
+                              }`}
                            initial={{ opacity: 0 }}
                            animate={{ opacity: 1 }}
                            exit={{ opacity: 0 }}
@@ -147,7 +168,10 @@ export default function Header() {
                            transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
                            className="fixed top-20 left-0 right-0 z-[80] lg:hidden"
                         >
-                           <nav className="mx-3 rounded-2xl border border-white/15 bg-gradient-to-b from-black/70 to-black/60 backdrop-blur-md p-2 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
+                           <nav className={`mx-3 rounded-2xl backdrop-blur-md p-2 ${isWhiteHeader
+                              ? 'border border-gray-200 bg-white/95 shadow-[0_10px_30px_rgba(0,0,0,0.1)]'
+                              : 'border border-white/15 bg-gradient-to-b from-black/70 to-black/60 shadow-[0_10px_30px_rgba(0,0,0,0.35)]'
+                              }`}>
                               <div className="px-2 py-1">
                                  {navigationItems.map((item, index) => {
                                     const isActive = pathname === item.href;
@@ -165,9 +189,13 @@ export default function Header() {
                                        >
                                           <Link
                                              href={item.href}
-                                             className={`block transition-all duration-300 py-3.5 px-3 rounded-xl font-medium text-[17px] tracking-wide hover:scale-[1.02] ${isActive
-                                                ? 'text-white bg-white/20'
-                                                : 'text-white/90 hover:text-white hover:bg-white/10 active:bg-white/15'
+                                             className={`block transition-all duration-300 py-3.5 px-3 rounded-xl font-medium text-[17px] tracking-wide hover:scale-[1.02] ${isWhiteHeader
+                                                ? isActive
+                                                   ? 'text-white bg-[#0B1D2C]'
+                                                   : 'text-[#0B1D2C] hover:text-[#0B1D2C] hover:bg-gray-100 active:bg-gray-200'
+                                                : isActive
+                                                   ? 'text-white bg-white/20'
+                                                   : 'text-white/90 hover:text-white hover:bg-white/10 active:bg-white/15'
                                                 }`}
                                              onClick={handleLinkClick}
                                           >
@@ -178,7 +206,8 @@ export default function Header() {
                                  })}
                               </div>
                               <motion.div
-                                 className="mt-2 border-t border-white/10"
+                                 className={`mt-2 border-t ${isWhiteHeader ? 'border-gray-200' : 'border-white/10'
+                                    }`}
                                  initial={{ scaleX: 0 }}
                                  animate={{ scaleX: 1 }}
                                  transition={{ duration: 0.3, delay: 0.5 }}
