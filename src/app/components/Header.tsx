@@ -125,7 +125,7 @@ export default function Header() {
                         >
                            Helios Marine
                         </motion.h1>
-                        <motion.p
+                        <motion.div
                            whileHover={{ x: 2 }}
                            transition={{ type: "spring", stiffness: 300 }}
                            className={`text-[10px] sm:text-xs flex items-center gap-1 sm:gap-2 transition-colors duration-300 ${isScrolled ? 'text-gray-600' : isWhiteHeader ? 'text-gray-600' : 'text-white/70'
@@ -145,7 +145,7 @@ export default function Header() {
                                     }`}
                               />
                            </motion.div>
-                        </motion.p>
+                        </motion.div>
                      </div>
                   </Link>
                </motion.div>
