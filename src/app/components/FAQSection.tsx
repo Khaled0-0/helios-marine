@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
+import Link from 'next/link';
 import Container from './ui/Container';
 import { ChevronDownIcon } from './ui/Icons';
 
@@ -160,12 +161,12 @@ export default function FAQSection() {
                      whileTap={{ scale: 0.95 }}
                      transition={{ duration: 0.2 }}
                   >
-                     <a
+                     <Link
                         href="/contact"
-                        className="inline-block bg-[#0B1D2C] hover:bg-[#0A1A28] text-white px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+                        className="inline-block bg-[#0B1D2C] hover:bg-[#0A1A28] text-white px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
                      >
                         Contact Us
-                     </a>
+                     </Link>
                   </motion.div>
                </motion.div>
             </div>

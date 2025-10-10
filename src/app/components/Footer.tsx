@@ -16,8 +16,7 @@ import Container from './ui/Container';
 const quickLinks = [
   { name: 'Models', href: '/boats' },
   { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
-  { name: 'FAQ', href: '/faq' }
+  { name: 'Contact', href: '/contact' }
 ];
 
 const socialLinks = [
