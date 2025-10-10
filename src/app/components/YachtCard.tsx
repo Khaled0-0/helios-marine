@@ -28,7 +28,7 @@ export default function YachtCard({ yacht, index }: YachtCardProps) {
             rotateX: 2,
             transition: { duration: 0.2, type: "spring", stiffness: 300 }
          }}
-         className="bg-white rounded-xl shadow-lg hover:shadow-2xl hover:shadow-[#0B1D2C]/10 transition-all duration-300 overflow-hidden group cursor-pointer"
+         className="bg-white rounded-xl shadow-lg hover:shadow-2xl hover:shadow-[#0B1D2C]/10 transition-all duration-300 overflow-hidden group"
       >
          {/* Image Container */}
          <motion.div
