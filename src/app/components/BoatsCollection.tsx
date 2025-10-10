@@ -16,10 +16,10 @@ export default function BoatsCollection() {
    const [filters, setFilters] = useState<FilterOptions>({
       bodyType: 'All Types',
       year: 'All Years',
-      minLength: 15,
-      maxLength: 35,
-      minPrice: 0,
-      maxPrice: 5
+      minLength: 19.9,
+      maxLength: 31,
+      minPrice: 39,
+      maxPrice: 237
    });
 
    // Filter and sort yachts
@@ -30,13 +30,8 @@ export default function BoatsCollection() {
             return false;
          }
 
-         // Body type filter
+         // Category filter
          if (filters.bodyType !== 'All Types' && yacht.category !== filters.bodyType) {
-            return false;
-         }
-
-         // Year filter
-         if (filters.year !== 'All Years' && yacht.year.toString() !== filters.year) {
             return false;
          }
 
@@ -46,8 +41,8 @@ export default function BoatsCollection() {
             return false;
          }
 
-         // Price filter
-         const yachtPrice = parseFloat(yacht.price.replace('€', '').replace('M', ''));
+         // Price filter (convert to thousands)
+         const yachtPrice = parseFloat(yacht.price.replace('€', '').replace(/,/g, '')) / 1000;
          if (yachtPrice < filters.minPrice || yachtPrice > filters.maxPrice) {
             return false;
          }
@@ -63,9 +58,9 @@ export default function BoatsCollection() {
             case 'oldest':
                return a.year - b.year;
             case 'price-low':
-               return parseFloat(a.price.replace('€', '').replace('M', '')) - parseFloat(b.price.replace('€', '').replace('M', ''));
+               return parseFloat(a.price.replace('€', '').replace(/,/g, '')) - parseFloat(b.price.replace('€', '').replace(/,/g, ''));
             case 'price-high':
-               return parseFloat(b.price.replace('€', '').replace('M', '')) - parseFloat(a.price.replace('€', '').replace('M', ''));
+               return parseFloat(b.price.replace('€', '').replace(/,/g, '')) - parseFloat(a.price.replace('€', '').replace(/,/g, ''));
             case 'length':
                return parseFloat(b.length) - parseFloat(a.length);
             case 'name':
@@ -82,20 +77,20 @@ export default function BoatsCollection() {
       setFilters({
          bodyType: 'All Types',
          year: 'All Years',
-         minLength: 15,
-         maxLength: 35,
-         minPrice: 0,
-         maxPrice: 5
+         minLength: 19.9,
+         maxLength: 31,
+         minPrice: 39,
+         maxPrice: 237
       });
       setSearchTerm('');
    };
 
    const hasActiveFilters = filters.bodyType !== 'All Types' ||
       filters.year !== 'All Years' ||
-      filters.minLength !== 15 ||
-      filters.maxLength !== 35 ||
-      filters.minPrice !== 0 ||
-      filters.maxPrice !== 5 ||
+      filters.minLength !== 19.9 ||
+      filters.maxLength !== 31 ||
+      filters.minPrice !== 39 ||
+      filters.maxPrice !== 237 ||
       searchTerm !== '';
 
    return (

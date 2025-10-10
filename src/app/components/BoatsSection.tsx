@@ -4,42 +4,10 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Container from './ui/Container';
 import Button from './ui/Button';
+import { yachts } from '../data/yachts';
 
-const boatModels = [
-  {
-    id: 1,
-    name: "Nordkapp 760 Sport",
-    image: "/images/ImageWithFallback.png",
-    specs: {
-      topSpeed: "45 knots",
-      length: "7.6m",
-      capacity: "8 persons",
-      enginePower: "300 HP"
-    }
-  },
-  {
-    id: 2,
-    name: "Nordkapp 840 Sport",
-    image: "/images/ImageWithFallback(6).png",
-    specs: {
-      topSpeed: "50 knots",
-      length: "8.4m",
-      capacity: "10 persons",
-      enginePower: "400 HP"
-    }
-  },
-  {
-    id: 3,
-    name: "Nordkapp 680 RS",
-    image: "/images/ImageWithFallback(8).png",
-    specs: {
-      topSpeed: "42 knots",
-      length: "6.8m",
-      capacity: "6 persons",
-      enginePower: "250 HP"
-    }
-  }
-];
+// Get the first 3 featured boats for the homepage
+const featuredBoats = yachts.slice(0, 3);
 
 const SpecIcon = ({ icon, alt }: { icon: string; alt: string }) => (
   <div className="w-4 h-4 flex items-center justify-center">
@@ -74,7 +42,7 @@ export default function BoatsSection() {
 
         {/* Boat Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
-          {boatModels.map((boat, index) => (
+          {featuredBoats.map((boat, index) => (
             <motion.div
               key={boat.id}
               initial={{ y: 50, opacity: 0 }}
@@ -102,6 +70,7 @@ export default function BoatsSection() {
                     alt={boat.name}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0"
@@ -119,14 +88,14 @@ export default function BoatsSection() {
 
                   {/* Specifications Grid */}
                   <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6 justify-items-start">
-                    {/* Top Speed */}
+                    {/* Power */}
                     <div className="flex items-center space-x-3">
-                      <SpecIcon icon="/images/speed-i.svg" alt="Speed" />
+                      <SpecIcon icon="/images/lightning-i.svg" alt="Power" />
                       <div>
                         <div className="text-sm font-semibold text-[#0B1D2C]">
-                          {boat.specs.topSpeed}
+                          {boat.power}
                         </div>
-                        <div className="text-xs text-gray-600">Top Speed</div>
+                        <div className="text-xs text-gray-600">Power</div>
                       </div>
                     </div>
 
@@ -135,48 +104,43 @@ export default function BoatsSection() {
                       <SpecIcon icon="/images/anchor-i.svg" alt="Length" />
                       <div>
                         <div className="text-sm font-semibold text-[#0B1D2C]">
-                          {boat.specs.length}
+                          {boat.length} FT
                         </div>
                         <div className="text-xs text-gray-600">Length</div>
                       </div>
                     </div>
 
                     {/* Capacity */}
-                    <div className="flex items-center space-x-3 ">
+                    <div className="flex items-center space-x-3">
                       <SpecIcon icon="/images/persons-i.svg" alt="Capacity" />
                       <div>
                         <div className="text-sm font-semibold text-[#0B1D2C]">
-                          {boat.specs.capacity}
+                          {boat.capacity} guests
                         </div>
                         <div className="text-xs text-gray-600">Capacity</div>
                       </div>
                     </div>
 
-                    {/* Engine Power */}
+                    {/* Tank */}
                     <div className="flex items-center space-x-3 ml-7">
-                      <SpecIcon icon="/images/lightning-i.svg" alt="Engine Power" />
+                      <SpecIcon icon="/images/speed-i.svg" alt="Tank" />
                       <div>
                         <div className="text-sm font-semibold text-[#0B1D2C]">
-                          {boat.specs.enginePower}
+                          {boat.tank}
                         </div>
-                        <div className="text-xs text-gray-600">Engine Power</div>
+                        <div className="text-xs text-gray-600">Tank</div>
                       </div>
                     </div>
                   </div>
 
                   {/* View Details Button */}
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
+                  <Button
+                    href={boat.link || '#'}
+                    external={true}
+                    className="w-full bg-[#0B1D2C] hover:bg-[#0A1A28] text-white py-3 rounded-lg font-semibold transition-all duration-300"
                   >
-                    <Button
-                      href={`/boats/${boat.id}`}
-                      className="w-full bg-[#0B1D2C] hover:bg-[#0A1A28] text-white py-3 rounded-lg font-semibold transition-all duration-300"
-                    >
-                      View Details
-                    </Button>
-                  </motion.div>
+                    View Details
+                  </Button>
                 </div>
               </motion.div>
             </motion.div>
@@ -192,16 +156,27 @@ export default function BoatsSection() {
           className="text-center"
         >
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
+            whileHover={{
+              scale: 1.05,
+              y: -2,
+              transition: { duration: 0.2, type: "spring", stiffness: 300 }
+            }}
+            whileTap={{
+              scale: 0.95,
+              transition: { duration: 0.1 }
+            }}
+            className='w-fit mx-auto'
           >
-            <a
+            <Button
               href="/boats"
-              className="inline-block bg-white text-[#0B1D2C] border-2 border-[#0B1D2C] hover:bg-[#0B1D2C] hover:text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 cursor-pointer"
+              className="bg-black text-white border-2 border-[#0B1D2C] px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#0B1D2C]/25 group"
             >
-              View All Models
-            </a>
+              <motion.span
+                className="inline-block group-hover:translate-x-1 transition-transform duration-150"
+              >
+                View All Models
+              </motion.span>
+            </Button>
           </motion.div>
         </motion.div>
       </Container>

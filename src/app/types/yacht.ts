@@ -10,6 +10,8 @@ export interface Yacht {
    price: string;
    image: string;
    description?: string;
+   link?: string;
+   width?: string;
 }
 
 export interface FilterOptions {

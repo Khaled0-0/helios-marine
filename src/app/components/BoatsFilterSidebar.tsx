@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FilterOptions } from '../types/yacht';
-import { bodyTypes, years } from '../data/yachts';
+import { bodyTypes } from '../data/yachts';
 
 interface BoatsFilterSidebarProps {
    filters: FilterOptions;
@@ -17,7 +17,6 @@ export default function BoatsFilterSidebar({
    onClearAll
 }: BoatsFilterSidebarProps) {
    const [isBodyTypeOpen, setIsBodyTypeOpen] = useState(false);
-   const [isYearOpen, setIsYearOpen] = useState(false);
 
    // Local state for input values to allow free typing
    const [minLengthInput, setMinLengthInput] = useState(filters.minLength.toString());
@@ -64,7 +63,7 @@ export default function BoatsFilterSidebar({
             </motion.p>
          </motion.div>
 
-         {/* Body Type Filter */}
+         {/* Category Filter */}
          <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -77,7 +76,7 @@ export default function BoatsFilterSidebar({
                transition={{ duration: 0.4, delay: 0.4 }}
                className="block text-sm font-medium text-[#0B1D2C] mb-2"
             >
-               Body Type
+               Category
             </motion.label>
             <div className="relative">
                <motion.button
@@ -137,79 +136,6 @@ export default function BoatsFilterSidebar({
             </div>
          </motion.div>
 
-         {/* Year Filter */}
-         <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="mb-6"
-         >
-            <motion.label
-               initial={{ x: -10, opacity: 0 }}
-               animate={{ x: 0, opacity: 1 }}
-               transition={{ duration: 0.4, delay: 0.7 }}
-               className="block text-sm font-medium text-[#0B1D2C] mb-2"
-            >
-               Year
-            </motion.label>
-            <div className="relative">
-               <motion.button
-                  initial={{ scale: 0.95, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.4, delay: 0.8 }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => setIsYearOpen(!isYearOpen)}
-                  className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-left flex items-center justify-between hover:bg-gray-100 transition-colors cursor-pointer"
-               >
-                  <span className="text-gray-700">{filters.year}</span>
-                  <motion.svg
-                     animate={{ rotate: isYearOpen ? 180 : 0 }}
-                     transition={{ duration: 0.3 }}
-                     className="w-4 h-4 text-gray-500"
-                     fill="none"
-                     stroke="currentColor"
-                     viewBox="0 0 24 24"
-                  >
-                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </motion.svg>
-               </motion.button>
-
-               <AnimatePresence>
-                  {isYearOpen && (
-                     <motion.div
-                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10"
-                     >
-                        {years.map((year, index) => (
-                           <motion.button
-                              key={year}
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ duration: 0.2, delay: index * 0.05 }}
-                              whileHover={{ scale: 1.02 }}
-                              whileTap={{ scale: 0.98 }}
-                              onClick={() => {
-                                 handleFilterChange('year', year);
-                                 setIsYearOpen(false);
-                              }}
-                              className={`w-full px-4 py-3 text-left first:rounded-t-lg cursor-pointer last:rounded-b-lg ${filters.year === year
-                                 ? 'bg-[#0B1D2C] text-white'
-                                 : 'text-[#0B1D2C] hover:bg-gray-100'
-                                 }`}
-                           >
-                              {year}
-                           </motion.button>
-                        ))}
-                     </motion.div>
-                  )}
-               </AnimatePresence>
-            </div>
-         </motion.div>
-
          {/* Length Filter */}
          <motion.div
             initial={{ y: 20, opacity: 0 }}
@@ -248,19 +174,20 @@ export default function BoatsFilterSidebar({
                      <motion.input
                         whileFocus={{ scale: 1.02 }}
                         type="number"
-                        min="10"
-                        max="50"
+                        min="19.9"
+                        max="31"
+                        step="0.1"
                         value={minLengthInput}
                         onChange={(e) => {
                            setMinLengthInput(e.target.value);
                         }}
                         onBlur={(e) => {
-                           const value = parseInt(e.target.value);
+                           const value = parseFloat(e.target.value);
                            if (isNaN(value) || e.target.value === '') {
-                              setMinLengthInput('10');
-                              handleFilterChange('minLength', 10);
+                              setMinLengthInput('19.9');
+                              handleFilterChange('minLength', 19.9);
                            } else {
-                              const constrainedValue = Math.max(10, Math.min(50, Math.min(value, filters.maxLength)));
+                              const constrainedValue = Math.max(19.9, Math.min(31, Math.min(value, filters.maxLength)));
                               setMinLengthInput(constrainedValue.toString());
                               handleFilterChange('minLength', constrainedValue);
                            }
@@ -279,19 +206,20 @@ export default function BoatsFilterSidebar({
                      <motion.input
                         whileFocus={{ scale: 1.02 }}
                         type="number"
-                        min="10"
-                        max="50"
+                        min="19.9"
+                        max="31"
+                        step="0.1"
                         value={maxLengthInput}
                         onChange={(e) => {
                            setMaxLengthInput(e.target.value);
                         }}
                         onBlur={(e) => {
-                           const value = parseInt(e.target.value);
+                           const value = parseFloat(e.target.value);
                            if (isNaN(value) || e.target.value === '') {
-                              setMaxLengthInput('50');
-                              handleFilterChange('maxLength', 50);
+                              setMaxLengthInput('31');
+                              handleFilterChange('maxLength', 31);
                            } else {
-                              const constrainedValue = Math.max(10, Math.min(50, Math.max(value, filters.minLength)));
+                              const constrainedValue = Math.max(19.9, Math.min(31, Math.max(value, filters.minLength)));
                               setMaxLengthInput(constrainedValue.toString());
                               handleFilterChange('maxLength', constrainedValue);
                            }
@@ -312,18 +240,19 @@ export default function BoatsFilterSidebar({
                   <motion.div
                      className="absolute h-2 bg-[#0B1D2C] rounded-lg"
                      style={{
-                        left: `${Math.max(0, Math.min(100, ((filters.minLength - 10) / (50 - 10)) * 100))}%`,
-                        width: `${Math.max(0, Math.min(100, ((filters.maxLength - filters.minLength) / (50 - 10)) * 100))}%`
+                        left: `${Math.max(0, Math.min(100, ((filters.minLength - 19.9) / (31 - 19.9)) * 100))}%`,
+                        width: `${Math.max(0, Math.min(100, ((filters.maxLength - filters.minLength) / (31 - 19.9)) * 100))}%`
                      }}
                      transition={{ duration: 0.3 }}
                   ></motion.div>
                   <input
                      type="range"
-                     min="10"
-                     max="50"
-                     value={Math.max(10, Math.min(50, filters.minLength))}
+                     min="19.9"
+                     max="31"
+                     step="0.1"
+                     value={Math.max(19.9, Math.min(31, filters.minLength))}
                      onChange={(e) => {
-                        const value = parseInt(e.target.value);
+                        const value = parseFloat(e.target.value);
                         if (value <= filters.maxLength) {
                            handleFilterChange('minLength', value);
                         }
@@ -333,11 +262,12 @@ export default function BoatsFilterSidebar({
                   />
                   <input
                      type="range"
-                     min="10"
-                     max="50"
-                     value={Math.max(10, Math.min(50, filters.maxLength))}
+                     min="19.9"
+                     max="31"
+                     step="0.1"
+                     value={Math.max(19.9, Math.min(31, filters.maxLength))}
                      onChange={(e) => {
-                        const value = parseInt(e.target.value);
+                        const value = parseFloat(e.target.value);
                         if (value >= filters.minLength) {
                            handleFilterChange('maxLength', value);
                         }
@@ -383,13 +313,13 @@ export default function BoatsFilterSidebar({
                      transition={{ duration: 0.3, delay: 2.0 }}
                      className="flex-1"
                   >
-                     <label className="block text-xs text-gray-600 mb-1">Min Price: €{filters.minPrice}M</label>
+                     <label className="block text-xs text-gray-600 mb-1">Min Price: €{filters.minPrice}k</label>
                      <motion.input
                         whileFocus={{ scale: 1.02 }}
                         type="number"
-                        step="0.1"
-                        min="0"
-                        max="10"
+                        step="1"
+                        min="39"
+                        max="237"
                         value={minPriceInput}
                         onChange={(e) => {
                            setMinPriceInput(e.target.value);
@@ -397,16 +327,16 @@ export default function BoatsFilterSidebar({
                         onBlur={(e) => {
                            const value = parseFloat(e.target.value);
                            if (isNaN(value) || e.target.value === '') {
-                              setMinPriceInput('0');
-                              handleFilterChange('minPrice', 0);
+                              setMinPriceInput('39');
+                              handleFilterChange('minPrice', 39);
                            } else {
-                              const constrainedValue = Math.max(0, Math.min(10, Math.min(value, filters.maxPrice)));
+                              const constrainedValue = Math.max(39, Math.min(237, Math.min(value, filters.maxPrice)));
                               setMinPriceInput(constrainedValue.toString());
                               handleFilterChange('minPrice', constrainedValue);
                            }
                         }}
                         className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm text-[#0B1D2C] placeholder-gray-500"
-                        placeholder="€0.0M"
+                        placeholder="€39k"
                      />
                   </motion.div>
                   <motion.div
@@ -415,13 +345,13 @@ export default function BoatsFilterSidebar({
                      transition={{ duration: 0.3, delay: 2.1 }}
                      className="flex-1"
                   >
-                     <label className="block text-xs text-gray-600 mb-1">Max Price: €{filters.maxPrice}M</label>
+                     <label className="block text-xs text-gray-600 mb-1">Max Price: €{filters.maxPrice}k</label>
                      <motion.input
                         whileFocus={{ scale: 1.02 }}
                         type="number"
-                        step="0.1"
-                        min="0"
-                        max="10"
+                        step="1"
+                        min="39"
+                        max="237"
                         value={maxPriceInput}
                         onChange={(e) => {
                            setMaxPriceInput(e.target.value);
@@ -429,16 +359,16 @@ export default function BoatsFilterSidebar({
                         onBlur={(e) => {
                            const value = parseFloat(e.target.value);
                            if (isNaN(value) || e.target.value === '') {
-                              setMaxPriceInput('10');
-                              handleFilterChange('maxPrice', 10);
+                              setMaxPriceInput('237');
+                              handleFilterChange('maxPrice', 237);
                            } else {
-                              const constrainedValue = Math.max(0, Math.min(10, Math.max(value, filters.minPrice)));
+                              const constrainedValue = Math.max(39, Math.min(237, Math.max(value, filters.minPrice)));
                               setMaxPriceInput(constrainedValue.toString());
                               handleFilterChange('maxPrice', constrainedValue);
                            }
                         }}
                         className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm text-[#0B1D2C] placeholder-gray-500"
-                        placeholder="€5.0M"
+                        placeholder="€237k"
                      />
                   </motion.div>
                </motion.div>
@@ -453,21 +383,22 @@ export default function BoatsFilterSidebar({
                   <motion.div
                      className="absolute h-2 bg-[#0B1D2C] rounded-lg"
                      style={{
-                        left: `${Math.max(0, Math.min(100, (filters.minPrice / 10) * 100))}%`,
-                        width: `${Math.max(0, Math.min(100, ((filters.maxPrice - filters.minPrice) / 10) * 100))}%`
+                        left: `${Math.max(0, Math.min(100, ((filters.minPrice - 39) / (237 - 39)) * 100))}%`,
+                        width: `${Math.max(0, Math.min(100, ((filters.maxPrice - filters.minPrice) / (237 - 39)) * 100))}%`
                      }}
                      transition={{ duration: 0.3 }}
                   ></motion.div>
                   <input
                      type="range"
-                     min="0"
-                     max="10"
-                     step="0.1"
-                     value={Math.max(0, Math.min(10, filters.minPrice))}
+                     min="39"
+                     max="236"
+                     step="1"
+                     value={filters.minPrice}
                      onChange={(e) => {
                         const value = parseFloat(e.target.value);
                         if (value <= filters.maxPrice) {
                            handleFilterChange('minPrice', value);
+                           setMinPriceInput(value.toString());
                         }
                      }}
                      className="absolute w-full h-2 bg-transparent appearance-none cursor-pointer slider-thumb"
@@ -475,14 +406,15 @@ export default function BoatsFilterSidebar({
                   />
                   <input
                      type="range"
-                     min="0"
-                     max="10"
-                     step="0.1"
-                     value={Math.max(0, Math.min(10, filters.maxPrice))}
+                     min="39"
+                     max="236"
+                     step="1"
+                     value={filters.maxPrice}
                      onChange={(e) => {
                         const value = parseFloat(e.target.value);
                         if (value >= filters.minPrice) {
                            handleFilterChange('maxPrice', value);
+                           setMaxPriceInput(value.toString());
                         }
                      }}
                      className="absolute w-full h-2 bg-transparent appearance-none cursor-pointer slider-thumb"
@@ -500,9 +432,9 @@ export default function BoatsFilterSidebar({
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={onClearAll}
-            className="w-full bg-white border border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:bg-gray-50 cursor-pointer hover:text-red-500 transition-all duration-300"
+            className="w-full bg-white border border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:bg-gray-50 cursor-pointer hover:text-red-500 transition-all duration-300 flex gap-3 items-center justify-center"
          >
-            ✕ Clear All Filters
+            <span>✕</span>  Clear All Filters
          </motion.button>
       </motion.div>
    );
