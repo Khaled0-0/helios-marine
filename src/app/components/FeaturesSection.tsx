@@ -105,7 +105,7 @@ export default function FeaturesSection() {
                className="text-center mb-16"
             >
                <h2 className="font-serif italic text-4xl sm:text-5xl md:text-6xl text-[#0B1D2C] mb-6">
-                  Featured Models
+                  Our Promise
                </h2>
                <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto xl:whitespace-nowrap leading-relaxed">
                   Your trusted partner for Nordkapp excellence in the United Arab Emirates.

@@ -59,53 +59,63 @@ const ExperienceCard = ({ experience, index }: { experience: typeof experiences[
       className="group"
    >
       <motion.div
-         className="relative rounded-2xl overflow-hidden shadow-2xl h-80 sm:h-96 lg:h-[400px]"
+         className="relative rounded-2xl overflow-hidden shadow-2xl h-80 sm:h-96 lg:h-[420px] flex flex-col"
          whileHover={{
             scale: 1.02,
             y: -8
          }}
          transition={{ duration: 0.4, ease: "easeOut" }}
       >
-         <Image
-            src={experience.image}
-            alt={experience.title}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            priority={index < 2}
-         />
+         {/* Image Section - Fixed Height */}
+         <div className="relative flex-1 min-h-0">
+            <Image
+               src={experience.image}
+               alt={experience.title}
+               fill
+               className="object-cover transition-transform duration-500 group-hover:scale-105"
+               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+               priority={index < 2}
+            />
 
-         {/* Gradient overlay */}
-         <motion.div
-            className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
-            initial={{ opacity: 0.8 }}
-            whileHover={{ opacity: 0.9 }}
-            transition={{ duration: 0.3 }}
-         />
+            {/* Gradient overlay */}
+            <motion.div
+               className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
+               initial={{ opacity: 0.8 }}
+               whileHover={{ opacity: 0.9 }}
+               transition={{ duration: 0.3 }}
+            />
+         </div>
 
-         {/* Content overlay */}
+         {/* Content Section - Fixed Height */}
          <motion.div
-            className="absolute bottom-0 left-0 right-0 p-6 text-white"
+            className="absolute bottom-0 left-0 right-0 p-6 text-white bg-gradient-to-t from-black/90 to-transparent"
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: experience.delay + 0.2 }}
          >
-            <motion.h3
-               className="text-2xl !not-italic sm:text-3xl font-serif  font-bold mb-2"
-               whileHover={{ scale: 1.05 }}
-               transition={{ duration: 0.2 }}
-            >
-               {experience.title}
-            </motion.h3>
-            <motion.p
-               className="text-sm sm:text-base text-gray-300 font-medium"
-               initial={{ opacity: 0.8 }}
-               whileHover={{ opacity: 1 }}
-               transition={{ duration: 0.2 }}
-            >
-               {experience.description}
-            </motion.p>
+            {/* Title - Fixed height container */}
+            <div className="xl:h-8 flex items-start justify-start mb-3">
+               <motion.h3
+                  className="text-2xl lg:text-xl !not-italic sm:text-3xl font-serif font-bold leading-tight xl:text-3xl md:text-2xl"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
+               >
+                  {experience.title}
+               </motion.h3>
+            </div>
+
+            {/* Description - Fixed height container */}
+            <div className="h-12 flex items-start justify-start">
+               <motion.p
+                  className="text-sm sm:text-base text-gray-300 font-medium leading-relaxed line-clamp-2"
+                  initial={{ opacity: 0.8 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.2 }}
+               >
+                  {experience.description}
+               </motion.p>
+            </div>
          </motion.div>
 
          {/* Hover effect overlay */}
